@@ -1,0 +1,9 @@
+<table class="table table-striped">
+    <tbody>
+      <tr *ngFor="let client of clientList">
+        <th scope="row">{{ client.name }}</th>
+        <td> {{ client.email }}</td>
+        <td>{{ client.billingStatus }}</td>
+      </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+@import "variables";
+@import "~bootstrap/scss/bootstrap";
+
+html,
+body {
+  height: 100%;
+  background-color: $secondary !important;
+}
+
+.container-fluid {
+  height: 100%;
+}
+
+.btn-primary,
+.btn-primary:visited {
+  background-color: $primary !important;
+  border-color: $primary !important;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+    background-color: $primary-hover !important;
+    border-color: $primary-hover !important;
+}
+
+.btn-primary:disabled {
+  background-color: $primary-disabled !important;
+  border-color: $primary !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

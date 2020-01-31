@@ -1,0 +1,61 @@
+@import "variables";
+
+.login-form {
+    max-width: 30em;
+}
+
+.card-error {
+    -webkit-animation: shake .5s ease-in-out;
+    animation: shake .5s ease-in-out;
+}
+
+@-webkit-keyframes shake {
+    0% {
+      -webkit-transform: translateX(0);
+    }
+  
+    20% {
+      -webkit-transform: translateX(-10px);
+    }
+  
+    40% {
+      -webkit-transform: translateX(10px);
+    }
+  
+    60% {
+      -webkit-transform: translateX(-10px);
+    }
+  
+    80% {
+      -webkit-transform: translateX(10px);
+    }
+  
+    100% {
+      -webkit-transform: translateX(0);
+    }
+  }
+  @keyframes shake {
+    0% {
+      transform: translateX(0);
+    }
+  
+    20% {
+      transform: translateX(-10px);
+    }
+  
+    40% {
+      transform: translateX(10px);
+    }
+  
+    60% {
+      transform: translateX(-10px);
+    }
+  
+    80% {
+      transform: translateX(10px);
+    }
+  
+    100% {
+      transform: translateX(0);
+    }
+  }
