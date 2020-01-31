@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiURL: 'https://us-central1-go4electric-dev.cloudfunctions.net/api',
+  apiURL: 'https://us-central1-go4electric-dev.cloudfunctions.net/',
   firebase: {
     apiKey: 'AIzaSyDslbqVYKvQXA7-sk9h3WrZVEmoNtDsWaE',
     authDomain: 'go4electric-dev.firebaseapp.com',
