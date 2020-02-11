@@ -9,7 +9,7 @@ import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // SERVICES
 import { AuthService } from './services/auth.service';
 import { LoginpageComponent } from './pages/loginpage/loginpage.component';

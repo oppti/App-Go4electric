@@ -1,10 +1,54 @@
-<nav class="navbar navbar-light go4-topbar fixed-top">
-    <h4> Go4Electric</h4>
-    <div class="dropdown ">
-        <fa name="ellipsis-v" class="cursor-pointer px-3" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+<nav class="navbar navbar-light navbar-expand-lg scrolling-navbar double-nav go4-topbar">
+    <!-- SideNav slide-out button sanduiche -->
+    <div class="float-left">
+        <div href="#" data-activates="slide-out" class="text-white">
+            <div id="menuToggle">
+                <input type="checkbox" />
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+                <ul id="menu">
+                    <a href="#" class="dropdown-item">
+                        <li>Dashboard</li>
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <li>Registrar Usuario</li>
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <li>Registrar Veiculo</li>
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <li>Registrar Key</li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- end Button sanduiche -->
+
+    <!-- logo -->
+    <div class="breadcrumb-dn mr-auto text-white">
+        <h4 class="px-5"> Go4Electric</h4>
+    </div>
+    <!-- end logo -->
+
+    <!-- dropdowns -->
+    <div class="dropdown">
+        <fa name="gear" class="cursor-pointer px-3" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false"></fa>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Sttings</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <fa name="ellipsis-v" class="cursor-pointer px-3" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false"></fa>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
+            <a class="dropdown-item" href="#">Perfil</a>
         </div>
     </div>
 </nav>
+<!-- end dropdowns -->

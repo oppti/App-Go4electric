@@ -1,9 +1,188 @@
-<table class="table table-striped">
-    <tbody>
-      <tr *ngFor="let client of clientList">
-        <th scope="row">{{ client.name }}</th>
-        <td> {{ client.email }}</td>
-        <td>{{ client.billingStatus }}</td>
-      </tr>
-    </tbody>
-  </table>
+<main class="pt-3">
+
+  <div class="container-fluid">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-12 mb-4">
+
+        <div class="card shadow p-3 mb-2 bg-white rounded">
+          <div class="card-body pl-0 pr-2 pb-0">
+            <div class="float-left white-text pl-4">
+              <p class="font-weight-light mb-1 mt-n1 text-black-50 font-small">Total Growth Go4electric</p>
+              <p><i class="fa fa-bar-chart pr-2 align-text-top mt-n1 icon icon-blue"></i><span
+                  class="font-weight-light h3">Performance</span>
+              </p>
+            </div>
+            <div class="btn-group float-right pr-3" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-sm btn-primary shadow-lg rounded" id="accountsUsers">Accounts
+                Users</button>
+              <p class="p-1"></p>
+              <button type="button" class="btn btn-sm btn-primary shadow-lg rounded" id="accountsCompanies">Accounts
+                Companies</button>
+              <p class="p-1"></p>
+              <button type="button" class="btn btn-sm btn-primary shadow-lg rounded" id="cars">register vehicles
+              </button>
+              <p class="p-1"></p>
+            </div>
+            <canvas id="lineChart" height="90"></canvas>
+          </div>
+        </div>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-lg-4 col-md-12 mb-4">
+
+        <div class="card shadow p-3 mb-2 bg-white rounded">
+          <div class="card-body px-2">
+            <div class="float-left white-text pl-4">
+              <p class="font-weight-light mb-1 mt-n1 text-black-50 font-small">Total Cars</p>
+              <p><i class="fa fa-car pr-2 align-text-top mt-n1 icon icon-blue"></i><span
+                  class="font-weight-light h3">354 780k</span></p>
+            </div>
+            <canvas id="horizontalBar" height="280"></canvas>
+          </div>
+        </div>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-lg-4 col-md-6 mb-4">
+
+        <div class="card shadow p-3 mb-2 bg-white rounded">
+          <div class="card-body px-2">
+            <div class="float-left white-text pl-4">
+              <p class="font-weight-light mb-1 mt-n1 text-black-50 font-small">Total Scooters</p>
+              <p><i class="fa fa-motorcycle pr-2 align-text-top mt-n1 icon icon-blue"></i><span
+                  class="font-weight-light h3">14,500K</span></p>
+            </div>
+            <canvas id="lineChartSecond" height="280"></canvas>
+          </div>
+        </div>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-lg-4 col-md-6 mb-4">
+
+        <div class="card shadow p-3 mb-2 bg-white rounded">
+          <div class="card-body px-2">
+            <div class="float-left white-text pl-4">
+              <p class="font-weight-light mb-1 mt-n1 text-black-50 font-small">Total Others</p>
+              <p><i class="fa fa-bicycle pr-2 align-text-top mt-n1 icon icon-blue"></i><span
+                  class="font-weight-light h3">7,000K</span></p>
+            </div>
+            <canvas id="barChart" height="280"></canvas>
+          </div>
+        </div>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid end row -->
+
+    <!-- Grid open row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-6 mb-4">
+
+        <!-- Card -->
+        <div class="card min-card card-table shadow p-3 mb-2 bg-white rounded">
+
+          <div class="card-color rounded d-flex justify-content-between">
+            <div class="d-flex justify-content-start">
+              <!-- <p class="my-2 text-white pr-3">Tasks(5)</p> -->
+              <h5 class="my-2 text-white">Users Table</h5>
+            </div>
+            <div class="md-form mt-0">
+              <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+            </div>
+          </div>
+
+          <!-- Card content -->
+          <div class="card-body pt-3 table-striped">
+            <div class="table-responsive">
+              <table class="table text-black  mb-0">
+                <thead class="">
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let client of clientList">
+                    <th scope="row">{{ client.name }}</th>
+                    <td> {{ client.email }}</td>
+                    <td>{{ client.billingStatus }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+        <!-- Card -->
+
+      </div>
+      <!-- Grid end row -->
+
+      <!-- Grid column -->
+      <div class="col-md-6 mb-4">
+
+        <!-- Card -->
+        <div class="card min-card card-table shadow p-3 mb-2 bg-white rounded">
+
+          <div class="card-color rounded d-flex justify-content-between">
+            <div class="d-flex justify-content-start">
+              <!-- <p class="my-2 text-white pr-3">Tasks(5)</p> -->
+              <h5 class="my-2 text-white">Vehicles Table</h5>
+            </div>
+            <div class="md-form mt-0">
+              <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+            </div>
+          </div>
+
+          <!-- Card content -->
+          <div class="card-body pt-3 table-striped">
+            <div class="table-responsive">
+              <table class="table text-black  mb-0">
+                <thead class="">
+                  <tr>
+                    <th>Name</th>
+                    <th>Model</th>
+                    <th>Vehicle</th>
+                    <th>Connector</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let vehicle of vehicleList">
+                    <th scope="row">{{ vehicle.name}}</th>
+                    <td> {{ vehicle.model}}</td>
+                    <td>{{ vehicle.type}}</td>
+                    <td>{{ vehicle.connectorType}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<!-- Main layout -->
