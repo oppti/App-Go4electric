@@ -27,6 +27,12 @@ import { ModalVehiclesComponent } from './components/modal-vehicles/modal-vehicl
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { NgxMaskModule } from 'node_modules/ngx-mask/';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 
 @NgModule({
   declarations: [
@@ -50,7 +56,12 @@ import { MatDialogModule } from '@angular/material/dialog';
     HttpClientModule,
     Ng2SearchPipeModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    NgxMaskModule.forRoot(),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule
   ],
   entryComponents: [
     ModalUsersComponent,

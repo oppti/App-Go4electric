@@ -16,38 +16,43 @@
             <div class="modal-body mx-3">
                 <div class="md-form mb-5">
                     <i class="fa fa-user prefix grey-text"></i>
-                    <input type="text" id="form34" class="form-control validate" placeholder="Ex: João">
+                    <input type="text" [(ngModel)]="client.name" id="form34" class="form-control validate"
+                        placeholder="Ex: João">
                     <label data-error="wrong" data-success="right" for="form34">Nome</label>
                 </div>
 
                 <div class="md-form mb-5">
                     <i class="fa fa-envelope prefix grey-text"></i>
-                    <input type="email" id="form29" class="form-control validate" placeholder="Ex: example@example.com">
+                    <input type="email" [(ngModel)]="client.email" id="form29" class="form-control validate"
+                        placeholder="Ex: example@example.com">
                     <label data-error="wrong" data-success="right" for="form29">Email</label>
                 </div>
 
                 <div class="md-form mb-5">
                     <i class="fa fa-id-card-o prefix grey-text"></i>
-                    <input type="text" id="form32" class="form-control validate" placeholder="Ex: xxxxxxxxx-xx">
-                    <label data-error="wrong" data-success="right" for="form32">CPF</label>
+                    <input type="text" [(ngModel)]="client.cpf" id="form30" class="form-control validate"
+                        placeholder="Ex: xxxxxxxxx-xx">
+                    <label data-error="wrong" data-success="right" for="form30">CPF</label>
                 </div>
 
                 <div class="md-form mb-5">
                     <i class="fa fa-unlock-alt prefix grey-text"></i>
-                    <input type="text" id="form32" class="form-control validate" placeholder="">
+                    <input type="text" [(ngModel)]="client.fcmToken" id="form32" class="form-control validate"
+                        placeholder="">
                     <label data-error="wrong" data-success="right" for="form32">Token</label>
                 </div>
 
                 <div class="md-form mb-5">
                     <i class="fa fa-unlock-alt prefix grey-text"></i>
-                    <input type="text" id="form32" class="form-control validate">
-                    <label data-error="wrong" data-success="right" for="form32">keyID</label>
+                    <input type="text" [(ngModel)]="client.keyID" id="form31" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="form31">keyID</label>
                 </div>
 
                 <div class="md-form mb-5">
                     <i class="fa fa-id-card-o prefix grey-text"></i>
-                    <input type="text" id="form32" class="form-control validate" placeholder="Ex: Active">
-                    <label data-error="wrong" data-success="right" for="form32">Status</label>
+                    <input type="text" [(ngModel)]="client.billingStatus" id="form33" class="form-control validate"
+                        placeholder="Ex: Active">
+                    <label data-error="wrong" data-success="right" for="form33">Status</label>
                 </div>
 
                 <div class="md-form">
@@ -59,7 +64,13 @@
 
             </div>
             <div class="modal-footer d-flex justify-content-center">
-                <button class="btn btn-primary shadow-lg btn-rounded mb-1 text-center" type="button">
+                <button class="btn btn-primary shadow-lg btn-rounded mb-1 text-center" (click)="onClick()"
+                    type="button">
+                    <span href="" class="#" data-toggle="modal" data-target="#modalContactForm">Cancelar</span>
+                </button>
+
+                <button class="btn btn-primary shadow-lg btn-rounded mb-1 text-center" [mat-dialog-close]="modalData"
+                    type="button">
                     <span href="" class="#" data-toggle="modal" data-target="#modalContactForm">Salvar</span>
                 </button>
             </div>

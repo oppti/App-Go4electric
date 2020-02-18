@@ -6,6 +6,11 @@ import { Vehicle } from 'src/app/model/vehicle';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ModalUsersComponent } from 'src/app/components/modal-users/modal-users.component';
 import { ModalVehiclesComponent } from 'src/app/components/modal-vehicles/modal-vehicles.component';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { map } from 'rxjs/operators';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-users-list',
@@ -13,10 +18,22 @@ import { ModalVehiclesComponent } from 'src/app/components/modal-vehicles/modal-
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit {
+  items: Observable<any[]>;
+  // displayedColumns: string[] = ['name', 'value', 'functions'];
   clientList: Client[];
   vehicleList: Vehicle[];
+  datasource: any;
+  // dataSource: Observable<{ key: string; }[]>;
 
-  constructor(private userService: UserService, private vehiclesService: VehiclesService, public dialog: MatDialog) { }
+  constructor(private userService: UserService, private vehiclesService: VehiclesService,
+    public dialog: MatDialog, private db: AngularFireDatabase) {
+    this.datasource = this.db.list('item').snapshotChanges()
+      .pipe(map(items => {
+        return items.map(item => {
+          return Object.assign({ key: item.payload.key }, item.payload.val());
+        });
+      }));
+  }
 
   ngOnInit() {
     this.userService.getUsers().subscribe((clients: Client[]) => {
@@ -35,7 +52,9 @@ export class UsersListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      if (result) {
+        this.db.list('go4electric-dev').push(result);
+      }
     });
   }
 
@@ -47,7 +66,39 @@ export class UsersListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      if (result) {
+        this.db.list('go4electric-dev').push(result);
+      }
+    });
+  }
+
+  delete(key) {
+    this.db.list('item').remove(key);
+  }
+
+  editUsers(data = null) {
+    const dialogRef = this.dialog.open(ModalUsersComponent, {
+      width: '500px',
+      data: { ...data, type: 'update' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.db.list('item').update(result.key, result);
+      }
+    });
+  }
+
+  editVehicles(data = null) {
+    const dialogRef = this.dialog.open(ModalVehiclesComponent, {
+      width: '500px',
+      data: { ...data, type: 'update' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.db.list('item').update(result.key, result);
+      }
     });
   }
 

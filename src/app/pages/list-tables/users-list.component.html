@@ -143,10 +143,12 @@
                     <td>{{ client.billingStatus }}</td>
                     <td>
                       <div class="btn-group">
-                        <button type="button" class="btn btn-primary shadow-lg rounded mr-2">
+                        <button type="button" class="btn btn-primary shadow-lg rounded mr-2"
+                          (click)="editUsers(element)">
                           <span class="fa fa-pencil"></span>
                         </button>
-                        <button type="button" class="btn btn-primary shadow-lg rounded mr-2">
+                        <button type="button" class="btn btn-primary shadow-lg rounded mr-2"
+                          (click)="delete(element.key)">
                           <span class="fa fa-remove"> </span>
                         </button>
                       </div>
@@ -210,10 +212,12 @@
                     <td>{{ vehicle.connectorType}}</td>
                     <td>
                       <div class="btn-group">
-                        <button type="button" class="btn btn-primary shadow-lg rounded mr-2">
+                        <button type="button" class="btn btn-primary shadow-lg rounded mr-2"
+                          (click)="editVehicles(element)">
                           <span class="fa fa-pencil"></span>
                         </button>
-                        <button type="button" class="btn btn-primary shadow-lg rounded mr-2">
+                        <button type="button" class="btn btn-primary shadow-lg rounded mr-2"
+                          (click)="delete(element.key)">
                           <span class="fa fa-remove"> </span>
                         </button>
                       </div>
