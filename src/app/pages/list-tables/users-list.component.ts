@@ -99,7 +99,12 @@ export class UsersListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.db.list('item').update(result.key, result);
+        // this.db.list('item').update(result.key, result);
+        this.vehiclesService.editVehicle(result).subscribe(() => {
+          this.vehiclesService.getVehicles().subscribe((vehicles) => {
+            this.vehicleList = vehicles;
+          });
+        });
       }
     });
   }

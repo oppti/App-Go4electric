@@ -30,4 +30,10 @@ export class VehiclesService {
     return this.http.post(environment.apiURL + '/vehicles/add', {vehicle: pVehicle}, { headers: this.getHeaders() })
       .pipe(map((response: ResponseData) => response.data as Vehicle));
   }
+
+  public editVehicle(pVehicle: Vehicle): Observable<Vehicle> {
+    return this.http.patch(environment.apiURL + '/vehicles/', {vehicle: pVehicle}, { headers: this.getHeaders() })
+      .pipe(map((response: ResponseData) => response.data as Vehicle));
+  }
+
 }
