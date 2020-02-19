@@ -61,13 +61,15 @@ export class UsersListComponent implements OnInit {
 
   insertVehicles() {
     const dialogRef = this.dialog.open(ModalVehiclesComponent, {
-      width: '250px',
+      width: '50em',
       data: {}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.db.list('go4electric-dev').push(result);
+        this.vehiclesService.addVehicle(result).subscribe((added) => {
+          this.vehicleList.push(added);
+        });
       }
     });
   }
@@ -89,10 +91,10 @@ export class UsersListComponent implements OnInit {
     });
   }
 
-  editVehicles(data = null) {
+  editVehicles(pVehicle) {
     const dialogRef = this.dialog.open(ModalVehiclesComponent, {
-      width: '500px',
-      data: { ...data, type: 'update' }
+      width: '50em',
+      data: { vehicle: pVehicle, action: 'edit'}
     });
 
     dialogRef.afterClosed().subscribe(result => {

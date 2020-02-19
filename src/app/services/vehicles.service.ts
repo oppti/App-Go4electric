@@ -25,4 +25,9 @@ export class VehiclesService {
     return this.http.get(environment.apiURL + '/vehicles', { headers: this.getHeaders() })
       .pipe(map((response: ResponseData) => response.data as Vehicle[]));
   }
+
+  public addVehicle(pVehicle: Vehicle): Observable<Vehicle> {
+    return this.http.post(environment.apiURL + '/vehicles/add', {vehicle: pVehicle}, { headers: this.getHeaders() })
+      .pipe(map((response: ResponseData) => response.data as Vehicle));
+  }
 }
