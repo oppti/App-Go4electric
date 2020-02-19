@@ -19,20 +19,12 @@ import { Observable } from 'rxjs';
 })
 export class UsersListComponent implements OnInit {
   items: Observable<any[]>;
-  // displayedColumns: string[] = ['name', 'value', 'functions'];
   clientList: Client[];
   vehicleList: Vehicle[];
   datasource: any;
-  // dataSource: Observable<{ key: string; }[]>;
 
   constructor(private userService: UserService, private vehiclesService: VehiclesService,
-    public dialog: MatDialog, private db: AngularFireDatabase) {
-    this.datasource = this.db.list('item').snapshotChanges()
-      .pipe(map(items => {
-        return items.map(item => {
-          return Object.assign({ key: item.payload.key }, item.payload.val());
-        });
-      }));
+              private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -40,7 +32,11 @@ export class UsersListComponent implements OnInit {
       this.clientList = clients;
     });
 
-    this.vehiclesService.getVehicles().subscribe((vehicles: Vehicle[]) => {
+    this.getVehicles();
+  }
+
+  getVehicles() {
+    this.vehiclesService.getVehicles().subscribe((vehicles) => {
       this.vehicleList = vehicles;
     });
   }
@@ -53,7 +49,7 @@ export class UsersListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.db.list('go4electric-dev').push(result);
+        // this.db.list('go4electric-dev').push(result);
       }
     });
   }
@@ -68,14 +64,17 @@ export class UsersListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.vehiclesService.addVehicle(result).subscribe((added) => {
-          this.vehicleList.push(added);
+          this.getVehicles();
         });
       }
     });
   }
 
-  delete(key) {
-    this.db.list('item').remove(key);
+  deleteVehicle(vehicle: Vehicle) {
+    // FAZER DIALOG DE CONFIRMAÇÃO
+    this.vehiclesService.delVehicle(vehicle.uid).subscribe(() => {
+      this.getVehicles();
+    });
   }
 
   editUsers(data = null) {
@@ -86,7 +85,7 @@ export class UsersListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.db.list('item').update(result.key, result);
+        // this.db.list('item').update(result.key, result);
       }
     });
   }
@@ -94,16 +93,13 @@ export class UsersListComponent implements OnInit {
   editVehicles(pVehicle) {
     const dialogRef = this.dialog.open(ModalVehiclesComponent, {
       width: '50em',
-      data: { vehicle: pVehicle, action: 'edit'}
+      data: { vehicle: pVehicle, action: 'edit' }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // this.db.list('item').update(result.key, result);
         this.vehiclesService.editVehicle(result).subscribe(() => {
-          this.vehiclesService.getVehicles().subscribe((vehicles) => {
-            this.vehicleList = vehicles;
-          });
+          this.getVehicles();
         });
       }
     });
