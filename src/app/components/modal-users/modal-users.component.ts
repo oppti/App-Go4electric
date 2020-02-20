@@ -25,11 +25,10 @@ export class ModalUsersComponent {
     if (data.action === 'edit') {
       this.client = data.client;
       this.title = this.client.name;
-    } else {
-      this.title = 'Users Table';
     }
 
     this.statusList = Object.keys(this.status);
+    return;
   }
 
   closeClick(): void {
