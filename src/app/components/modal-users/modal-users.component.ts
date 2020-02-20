@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Client } from 'src/app/model/client';
-import { Vehicle } from 'src/app/model/vehicle';
+import { Billingstatus } from 'src/app/model/billingstatus.enum';
 
 @Component({
   selector: 'app-modal-users',
@@ -9,17 +9,35 @@ import { Vehicle } from 'src/app/model/vehicle';
   styleUrls: ['./modal-users.component.scss']
 })
 export class ModalUsersComponent {
-  public title = 'Criar';
-  public modalData = { name: null, value: null, type: null };
+  public publicData = { client: null, action: null };
+  public title = '';
+  public client: Client;
+  public statusList: any[];
+
+  status = Billingstatus;
+
+
   constructor(
     public dialogRef: MatDialogRef<ModalUsersComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-    Object.assign(this.modalData, data);
-    this.title = (this.modalData.type != 'create') ? 'Atualizar' : 'Criar';
+    Object.assign(this.publicData, data);
+
+    if (data.action === 'edit') {
+      this.client = data.client;
+      this.title = this.client.name;
+    } else {
+      this.title = 'Users Table';
+    }
+
+    this.statusList = Object.keys(this.status);
   }
 
-  onNoClick(): void {
+  closeClick(): void {
     this.dialogRef.close();
+  }
+
+  save(): void {
+    this.dialogRef.close(this.client);
   }
 
 }

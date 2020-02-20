@@ -24,4 +24,15 @@ export class UserService {
     return this.http.get(environment.apiURL + '/users', { headers: this.getHeaders() })
       .pipe(map((response: ResponseData) => response.data as Client[]));
   }
+
+  public editUser(pUser: Client): Observable<Client> {
+    return this.http.patch(environment.apiURL + '/users/', { client: pUser }, { headers: this.getHeaders() })
+      .pipe(map((response: ResponseData) => response.data as Client));
+  }
+
+  public delUser(vuid: string): Observable<boolean> {
+    return this.http.delete(environment.apiURL + '/users/' + vuid, { headers: this.getHeaders() })
+      .pipe(map((response: ResponseData) => response.data as boolean));
+  }
+
 }

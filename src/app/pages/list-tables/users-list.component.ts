@@ -10,6 +10,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { AlertModalComponent } from 'src/app/components/alert-modal/alert-modal.component';
 
 
 @Component({
@@ -18,21 +19,26 @@ import { Observable } from 'rxjs';
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit {
+
   items: Observable<any[]>;
   clientList: Client[];
   vehicleList: Vehicle[];
   datasource: any;
+  searchTextUsers;
+  searchTextVehicles;
 
-  constructor(private userService: UserService, private vehiclesService: VehiclesService,
-              private dialog: MatDialog) {
+  constructor(private userService: UserService, private vehiclesService: VehiclesService, private dialog: MatDialog) {
   }
 
   ngOnInit() {
+    this.getUsers();
+    this.getVehicles();
+  }
+
+  getUsers() {
     this.userService.getUsers().subscribe((clients: Client[]) => {
       this.clientList = clients;
     });
-
-    this.getVehicles();
   }
 
   getVehicles() {
@@ -40,20 +46,6 @@ export class UsersListComponent implements OnInit {
       this.vehicleList = vehicles;
     });
   }
-
-  insertUsers() {
-    const dialogRef = this.dialog.open(ModalUsersComponent, {
-      width: '250px',
-      data: {}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        // this.db.list('go4electric-dev').push(result);
-      }
-    });
-  }
-
 
   insertVehicles() {
     const dialogRef = this.dialog.open(ModalVehiclesComponent, {
@@ -70,24 +62,54 @@ export class UsersListComponent implements OnInit {
     });
   }
 
-  deleteVehicle(vehicle: Vehicle) {
-    // FAZER DIALOG DE CONFIRMAÇÃO
-    this.vehiclesService.delVehicle(vehicle.uid).subscribe(() => {
-      this.getVehicles();
+  openModalAlert(vehicle: Vehicle) {
+    const dialogRef = this.dialog.open(AlertModalComponent, {
+      width: '200px',
+      data: {}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.vehiclesService.delVehicle(vehicle.uid).subscribe(() => {
+          this.getVehicles();
+        });
+      }
     });
   }
 
-  editUsers(data = null) {
+  delete(vehicle: Vehicle, client: Client) {
+    // FAZER DIALOG DE CONFIRMACAO//
+    const dialogRef = this.dialog.open(AlertModalComponent, {
+      width: '400px',
+      data: { mensage: 'Deseja mesmo deletar este campo?' }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === vehicle) {
+        this.vehiclesService.delVehicle(vehicle.uid).subscribe(() => {
+          this.getVehicles();
+        });
+      } else {
+        this.userService.delUser(client.uid).subscribe(() => {
+          this.getUsers();
+        });
+      }
+    });
+
+  }
+
+  editUsers(pUser) {
     const dialogRef = this.dialog.open(ModalUsersComponent, {
-      width: '500px',
-      data: { ...data, type: 'update' }
+      width: '50em',
+      data: { client: pUser, action: 'edit' }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // this.db.list('item').update(result.key, result);
+        this.userService.editUser(result).subscribe(() => {
+          this.getUsers();
+        });
       }
     });
+
   }
 
   editVehicles(pVehicle) {

@@ -112,7 +112,8 @@
               <form class="form-inline mr-auto">
                 <div class="md-form my-0">
                   <i class="fa fa-search fa-1.8x text-white ml-3 mr-2" aria-hidden="true"></i>
-                  <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                  <input class="form-control" type="text" placeholder="Search" name="Search"
+                    [(ngModel)]="searchTextUsers" [ngModelOptions]="{standalone: true}" autocomplete="off">
                 </div>
               </form>
             </div>
@@ -127,28 +128,21 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Status</th>
-                    <th>
-                      <button class="btn btn-primary shadow-lg btn-rounded mb-1 text-center" (click)="insertUsers()"
-                        type="button">
-                        <span href="" class="fa fa-plus mr-1" data-toggle="modal"
-                          data-target="#modalContactForm">Add</span>
-                      </button>
-                    </th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let client of clientList">
+                  <tr *ngFor="let client of clientList | filter:searchTextUsers">
                     <th scope="row">{{ client.name }}</th>
                     <td> {{ client.email }}</td>
                     <td>{{ client.billingStatus }}</td>
                     <td>
                       <div class="btn-group">
                         <button type="button" class="btn btn-primary shadow-lg rounded mr-2"
-                          (click)="editUsers(element)">
+                          (click)="editUsers(client)">
                           <span class="fa fa-pencil"></span>
                         </button>
-                        <button type="button" class="btn btn-primary shadow-lg rounded mr-2"
-                          (click)="delete(element.key)">
+                        <button type="button" class="btn btn-primary shadow-lg rounded mr-2" (click)="delete(client)">
                           <span class="fa fa-remove"> </span>
                         </button>
                       </div>
@@ -179,7 +173,8 @@
               <form class="form-inline mr-auto">
                 <div class="md-form my-0">
                   <i class="fa fa-search fa-1.8x text-white ml-3 mr-2" aria-hidden="true"></i>
-                  <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                  <input class="form-control" type="text" placeholder="Search" name="Search"
+                    [(ngModel)]="searchTextVehicles" [ngModelOptions]="{standalone: true}" autocomplete="off">
                 </div>
               </form>
             </div>
@@ -205,7 +200,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let vehicle of vehicleList">
+                  <tr *ngFor="let vehicle of vehicleList | filter:searchTextVehicles">
                     <th scope="row">{{ vehicle.name}}</th>
                     <td> {{ vehicle.model}}</td>
                     <td>{{ vehicle.type}}</td>
@@ -216,8 +211,7 @@
                           (click)="editVehicles(vehicle)">
                           <span class="fa fa-pencil"></span>
                         </button>
-                        <button type="button" class="btn btn-primary shadow-lg rounded mr-2"
-                          (click)="deleteVehicle(vehicle)">
+                        <button type="button" class="btn btn-primary shadow-lg rounded mr-2" (click)="delete(vehicle)">
                           <span class="fa fa-remove"> </span>
                         </button>
                       </div>
