@@ -32,6 +32,8 @@ import { MatInputModule } from '@angular/material/input';
 import { NgxMaskModule } from 'node_modules/ngx-mask/';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AlertModalComponent } from './components/alert-modal/alert-modal.component';
+
 
 
 @NgModule({
@@ -44,6 +46,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     UsersListComponent,
     ModalUsersComponent,
     ModalVehiclesComponent,
+    AlertModalComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -65,7 +68,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
   ],
   entryComponents: [
     ModalUsersComponent,
-    ModalVehiclesComponent
+    ModalVehiclesComponent,
+    AlertModalComponent
   ],
   providers: [AuthService, LoaderService,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }],

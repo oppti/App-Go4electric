@@ -10,6 +10,8 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { AlertModalComponent } from 'src/app/components/alert-modal/alert-modal.component';
+
 
 
 @Component({
@@ -22,6 +24,7 @@ export class UsersListComponent implements OnInit {
   clientList: Client[];
   vehicleList: Vehicle[];
   datasource: any;
+  searchText;
 
   constructor(private userService: UserService, private vehiclesService: VehiclesService,
               private dialog: MatDialog) {
@@ -41,15 +44,17 @@ export class UsersListComponent implements OnInit {
     });
   }
 
-  insertUsers() {
-    const dialogRef = this.dialog.open(ModalUsersComponent, {
-      width: '250px',
+  openModalAlert(vehicle: Vehicle) {
+    const dialogRef = this.dialog.open(AlertModalComponent, {
+      width: '200px',
       data: {}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // this.db.list('go4electric-dev').push(result);
+        this.vehiclesService.delVehicle(vehicle.uid).subscribe(() => {
+          this.getVehicles();
+        });
       }
     });
   }
@@ -71,10 +76,20 @@ export class UsersListComponent implements OnInit {
   }
 
   deleteVehicle(vehicle: Vehicle) {
-    // FAZER DIALOG DE CONFIRMAÇÃO
-    this.vehiclesService.delVehicle(vehicle.uid).subscribe(() => {
-      this.getVehicles();
+    // FAZER DIALOG DE CONFIRMACAO//
+    const dialogRef = this.dialog.open(AlertModalComponent, {
+      width: '400px',
+      data: {mensage: "Deseja deletar este veiculo?"}
     });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.vehiclesService.delVehicle(vehicle.uid).subscribe(() => {
+          this.getVehicles();
+        });
+      }
+    });
+    
   }
 
   editUsers(data = null) {
