@@ -9,7 +9,7 @@ import { Billingstatus } from 'src/app/model/billingstatus.enum';
   styleUrls: ['./modal-users.component.scss']
 })
 export class ModalUsersComponent {
-  public publicData = { client: null, action: null };
+  public publicDataUsers = { client: null, action: null };
   public title = '';
   public client: Client;
   public statusList: any[];
@@ -20,7 +20,7 @@ export class ModalUsersComponent {
   constructor(
     public dialogRef: MatDialogRef<ModalUsersComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-    Object.assign(this.publicData, data);
+    Object.assign(this.publicDataUsers, data);
 
     if (data.action === 'edit') {
       this.client = data.client;
@@ -28,7 +28,6 @@ export class ModalUsersComponent {
     }
 
     this.statusList = Object.keys(this.status);
-    return;
   }
 
   closeClick(): void {

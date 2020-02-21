@@ -33,6 +33,8 @@ import { NgxMaskModule } from 'node_modules/ngx-mask/';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AlertModalComponent } from './components/alert-modal/alert-modal.component';
+import { ListRecargaComponent } from './components/list-recarga/list-recarga.component';
+import { PerformanceComponent } from './components/performance/performance.component';
 
 
 @NgModule({
@@ -46,6 +48,8 @@ import { AlertModalComponent } from './components/alert-modal/alert-modal.compon
     ModalUsersComponent,
     ModalVehiclesComponent,
     AlertModalComponent,
+    ListRecargaComponent,
+    PerformanceComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

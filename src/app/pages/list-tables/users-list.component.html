@@ -1,49 +1,32 @@
 <main class="pt-3">
 
   <div class="container-fluid">
-
-    <!-- Grid row -->
     <div class="row">
-
-      <!-- Grid column -->
       <div class="col-md-12 mb-4">
-
         <div class="card shadow p-3 mb-2 bg-white rounded">
           <div class="card-body pl-0 pr-2 pb-0">
             <div class="float-left white-text pl-4">
-              <p class="font-weight-light mb-1 mt-n1 text-black-50 font-small">Total Growth Go4electric</p>
-              <p><i class="fa fa-bar-chart pr-2 align-text-top mt-n1 icon icon-blue"></i><span
-                  class="font-weight-light h3">Performance</span>
+              <p>
+                <i class="fa fa-bolt pr-2 align-text-top mt-n1 icon icon-blue"></i>
+                <span class="font-weight-light h3">Pontos de Recarga</span>
               </p>
+              <p class="font-weight-light mb-1 mt-n1 text-black-50 font-small p-3">Total charge points</p>
             </div>
             <div class="btn-group float-right pr-3" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-sm btn-primary shadow-lg rounded" id="accountsUsers">Accounts
-                Users</button>
-              <p class="p-1"></p>
-              <button type="button" class="btn btn-sm btn-primary shadow-lg rounded" id="accountsCompanies">Accounts
-                Companies</button>
-              <p class="p-1"></p>
-              <button type="button" class="btn btn-sm btn-primary shadow-lg rounded" id="cars">register vehicles
-              </button>
+              <button type="button" class="btn btn-sm btn-primary shadow-md rounded" id="accountsUsers">New
+                Point</button>
               <p class="p-1"></p>
             </div>
-            <canvas id="lineChart" height="90"></canvas>
+            <!-- table -->
           </div>
         </div>
-
       </div>
-      <!-- Grid column -->
-
     </div>
     <!-- Grid row -->
-
-    <!-- Grid row -->
     <div class="row">
-
-      <!-- Grid column -->
       <div class="col-lg-4 col-md-12 mb-4">
 
-        <div class="card shadow p-3 mb-2 bg-white rounded">
+        <div class="card min-cardzinho shadow p-3 mb-2 bg-white rounded">
           <div class="card-body px-2">
             <div class="float-left white-text pl-4">
               <p class="font-weight-light mb-1 mt-n1 text-black-50 font-small">Total Cars</p>
@@ -60,7 +43,7 @@
       <!-- Grid column -->
       <div class="col-lg-4 col-md-6 mb-4">
 
-        <div class="card shadow p-3 mb-2 bg-white rounded">
+        <div class="card min-cardzinho shadow p-3 mb-2 bg-white rounded">
           <div class="card-body px-2">
             <div class="float-left white-text pl-4">
               <p class="font-weight-light mb-1 mt-n1 text-black-50 font-small">Total Scooters</p>
@@ -77,7 +60,7 @@
       <!-- Grid column -->
       <div class="col-lg-4 col-md-6 mb-4">
 
-        <div class="card shadow p-3 mb-2 bg-white rounded">
+        <div class="min-cardzinho shadow p-3 mb-2 bg-white rounded">
           <div class="card-body px-2">
             <div class="float-left white-text pl-4">
               <p class="font-weight-light mb-1 mt-n1 text-black-50 font-small">Total Others</p>
@@ -90,19 +73,13 @@
 
       </div>
       <!-- Grid column -->
-
     </div>
-    <!-- Grid end row -->
-
     <!-- Grid open row -->
     <div class="row">
-
       <!-- Grid column -->
       <div class="col-md-6 mb-4">
-
         <!-- Card -->
-        <div class="card min-card card-table shadow p-3 mb-2 bg-white rounded">
-
+        <div class="card card-table shadow p-3 mb-2 bg-white rounded">
           <div class="card-color rounded d-flex justify-content-between">
             <div class="d-flex justify-content-start">
               <!-- <p class="my-2 text-white pr-3">Tasks(5)</p> -->
@@ -111,18 +88,20 @@
             <div class="md-form mt-0">
               <form class="form-inline mr-auto">
                 <div class="md-form my-0">
-                  <i class="fa fa-search fa-1.8x text-white ml-3 mr-2" aria-hidden="true"></i>
                   <input class="form-control" type="text" placeholder="Search" name="Search"
                     [(ngModel)]="searchTextUsers" [ngModelOptions]="{standalone: true}" autocomplete="off">
+                  <button class="btn btn-primary shadow-lg btn-rounded mb-1 text-center ml-1" cdkFocusInitial
+                    type="button">
+                    <i class="fa fa-search fa-1.8x text-white" aria-hidden="true"></i>
+                  </button>
                 </div>
               </form>
             </div>
           </div>
-
           <!-- Card content -->
           <div class="card-body pt-3 table-striped">
-            <div class="table-responsive">
-              <table class="table text-black mb-0">
+            <div class="table-responsive min-card">
+              <table class="table table-hover text-black mb-0">
                 <thead class="#">
                   <tr>
                     <th>Name</th>
@@ -138,11 +117,11 @@
                     <td>{{ client.billingStatus }}</td>
                     <td>
                       <div class="btn-group">
-                        <button type="button" class="btn btn-primary shadow-lg rounded mr-2"
+                        <button type="button" class="btn btn-primary shadow-md rounded mr-2"
                           (click)="editUsers(client)">
                           <span class="fa fa-pencil"></span>
                         </button>
-                        <button type="button" class="btn btn-primary shadow-lg rounded mr-2" (click)="delete(client)">
+                        <button type="button" class="btn btn-primary shadow-md rounded mr-2" (click)="delete(client)">
                           <span class="fa fa-remove"> </span>
                         </button>
                       </div>
@@ -152,19 +131,14 @@
               </table>
             </div>
           </div>
-
         </div>
         <!-- Card -->
-
       </div>
       <!-- Grid end row -->
-
       <!-- Grid column -->
       <div class="col-md-6 mb-4">
-
         <!-- Card -->
-        <div class="card min-card card-table shadow p-3 mb-2 bg-white rounded">
-
+        <div class="card card-table shadow p-3 mb-2 bg-white rounded">
           <div class="card-color rounded d-flex justify-content-between">
             <div class="d-flex justify-content-start">
               <h5 class="my-2 text-white">Vehicles Table</h5>
@@ -172,9 +146,12 @@
             <div class="md-form mt-0">
               <form class="form-inline mr-auto">
                 <div class="md-form my-0">
-                  <i class="fa fa-search fa-1.8x text-white ml-3 mr-2" aria-hidden="true"></i>
                   <input class="form-control" type="text" placeholder="Search" name="Search"
                     [(ngModel)]="searchTextVehicles" [ngModelOptions]="{standalone: true}" autocomplete="off">
+                  <button class="btn btn-primary shadow-lg btn-rounded mb-1 text-center ml-1" cdkFocusInitial
+                    type="button">
+                    <i class="fa fa-search fa-1.8x text-white" aria-hidden="true"></i>
+                  </button>
                 </div>
               </form>
             </div>
@@ -182,8 +159,8 @@
 
           <!-- Card content -->
           <div class="card-body pt-3 table-striped">
-            <div class="table-responsive">
-              <table class="table text-black  mb-0">
+            <div class="table-responsive min-card">
+              <table class="table table-hover text-black mb-0">
                 <thead class="#">
                   <tr>
                     <th>Name</th>
@@ -191,11 +168,16 @@
                     <th>Vehicle</th>
                     <th>Connector</th>
                     <th>
-                      <button class="btn btn-primary shadow-lg btn-rounded mb-1 text-center" (click)="insertVehicles()"
-                        type="button">
-                        <span href="" class="fa fa-plus mr-1" data-toggle="modal"
-                          data-target="#modalLoginAvatar">Add</span>
-                      </button>
+                      <!-- button -->
+                      <div class="btn-group float-right pr-3" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-sm btn-primary shadow-md rounded" id="addUsers"
+                          type="button" (click)="insertVehicles()">
+                          <span href="" class="fa fa-plus" data-toggle="modal"
+                            data-target="#modalLoginAvatar">Add</span>
+                        </button>
+                        <p class="p-1"></p>
+                      </div>
+                      <!-- end -->
                     </th>
                   </tr>
                 </thead>
@@ -207,11 +189,11 @@
                     <td>{{ vehicle.connectorType}}</td>
                     <td>
                       <div class="btn-group">
-                        <button type="button" class="btn btn-primary shadow-lg rounded mr-2"
+                        <button type="button" class="btn btn-primary shadow-md rounded mr-2"
                           (click)="editVehicles(vehicle)">
                           <span class="fa fa-pencil"></span>
                         </button>
-                        <button type="button" class="btn btn-primary shadow-lg rounded mr-2" (click)="delete(vehicle)">
+                        <button type="button" class="btn btn-primary shadow-md rounded mr-2" (click)="delete(vehicle)">
                           <span class="fa fa-remove"> </span>
                         </button>
                       </div>

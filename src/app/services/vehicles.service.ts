@@ -12,7 +12,6 @@ import { Vehicle } from '../model/vehicle';
 })
 
 export class VehiclesService {
-  editUsers: any;
 
   constructor(private http: HttpClient) { }
 
