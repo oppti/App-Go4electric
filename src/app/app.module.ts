@@ -36,6 +36,8 @@ import { AlertModalComponent } from './components/alert-modal/alert-modal.compon
 import { ListRecargaComponent } from './components/list-recarga/list-recarga.component';
 import { PerformanceComponent } from './components/performance/performance.component';
 import { ModalChargesComponent } from './components/modal-charges/modal-charges.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { SocketComponent } from './pages/socket/socket.component';
 
 
 @NgModule({
@@ -52,6 +54,8 @@ import { ModalChargesComponent } from './components/modal-charges/modal-charges.
     ListRecargaComponent,
     PerformanceComponent,
     ModalChargesComponent,
+    NotFoundComponent,
+    SocketComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

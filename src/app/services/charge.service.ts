@@ -20,22 +20,22 @@ export class ChargeService {
     };
   }
   public getCharges(): Observable<ChargePoints[]> {
-    return this.http.get(environment.apiURL + '/charges', { headers: this.getHeaders() })
+    return this.http.get(environment.apiURL + '/chargers', { headers: this.getHeaders() })
       .pipe(map((response: ResponseData) => response.data as ChargePoints[]));
   }
 
   public addCharges(pVehicle: ChargePoints): Observable<ChargePoints> {
-    return this.http.post(environment.apiURL + '/charges/add', { vehicle: pVehicle }, { headers: this.getHeaders() })
+    return this.http.post(environment.apiURL + '/chargers/add', { vehicle: pVehicle }, { headers: this.getHeaders() })
       .pipe(map((response: ResponseData) => response.data as ChargePoints));
   }
 
   public editCharges(pVehicle: ChargePoints): Observable<ChargePoints> {
-    return this.http.patch(environment.apiURL + '/charges', { vehicle: pVehicle }, { headers: this.getHeaders() })
+    return this.http.patch(environment.apiURL + '/chargers', { vehicle: pVehicle }, { headers: this.getHeaders() })
       .pipe(map((response: ResponseData) => response.data as ChargePoints));
   }
 
   public delCharges(vuid: string): Observable<boolean> {
-    return this.http.delete(environment.apiURL + '/charges' + vuid, { headers: this.getHeaders() })
+    return this.http.delete(environment.apiURL + '/chargers' + vuid, { headers: this.getHeaders() })
       .pipe(map((response: ResponseData) => response.data as boolean));
   }
 

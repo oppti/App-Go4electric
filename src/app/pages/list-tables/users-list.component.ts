@@ -100,7 +100,7 @@ export class UsersListComponent implements OnInit {
         this.vehiclesService.delVehicle(vehicle.uid).subscribe(() => {
           this.getVehicles();
         });
-      }
+      } else { }
     });
   }
 
@@ -114,7 +114,7 @@ export class UsersListComponent implements OnInit {
         this.chargeService.delCharges(charge.uid).subscribe(() => {
           this.getCharges();
         });
-      }
+      } else { }
     });
   }
 
@@ -128,7 +128,7 @@ export class UsersListComponent implements OnInit {
         this.userService.delUser(client.uid).subscribe(() => {
           this.getUsers();
         });
-      }
+      } else { }
     });
   }
 

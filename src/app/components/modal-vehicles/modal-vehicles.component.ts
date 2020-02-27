@@ -45,5 +45,4 @@ export class ModalVehiclesComponent {
   save(): void {
     this.dialogRef.close(this.vehicle);
   }
-
 }
