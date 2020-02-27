@@ -3,15 +3,16 @@ import { UserService } from 'src/app/services/user.service';
 import { Client } from 'src/app/model/client';
 import { VehiclesService } from 'src/app/services/vehicles.service';
 import { ChargeService } from 'src/app/services/charge.service';
+import { ChargePoints } from 'src/app/model/charge-points';
 import { Vehicle } from 'src/app/model/vehicle';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ModalUsersComponent } from 'src/app/components/modal-users/modal-users.component';
 import { ModalVehiclesComponent } from 'src/app/components/modal-vehicles/modal-vehicles.component';
-import { AngularFireDatabase } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { AlertModalComponent } from 'src/app/components/alert-modal/alert-modal.component';
+import { ModalChargesComponent } from 'src/app/components/modal-charges/modal-charges.component';
 
 
 @Component({
@@ -24,10 +25,13 @@ export class UsersListComponent implements OnInit {
   items: Observable<any[]>;
   clientList: Client[];
   vehicleList: Vehicle[];
-  // chagerList: Charge[];
+  chargeList: ChargePoints[];
+
   datasource: any;
+
   searchTextUsers;
   searchTextVehicles;
+  searchTextCharges;
 
   constructor(private userService: UserService, private vehiclesService: VehiclesService,
     private chargeService: ChargeService, private dialog: MatDialog) { }
@@ -35,14 +39,14 @@ export class UsersListComponent implements OnInit {
   ngOnInit() {
     this.getUsers();
     this.getVehicles();
-    // this.getCharges();
+    this.getCharges();
   }
 
-  // getCharges() {
-  //   this.chargeService.getUsers().subscribe((charge: Charge[]) => {
-  //     this.chagerList = charge;
-  //   });
-  // }
+  getCharges() {
+    this.chargeService.getCharges().subscribe((charge: ChargePoints[]) => {
+      this.chargeList = charge;
+    });
+  }
 
   getUsers() {
     this.userService.getUsers().subscribe((clients: Client[]) => {
@@ -71,22 +75,22 @@ export class UsersListComponent implements OnInit {
     });
   }
 
-  openModalAlert(vehicle: Vehicle) {
-    const dialogRef = this.dialog.open(AlertModalComponent, {
-      width: '200px',
+  insertCharges() {
+    const dialogRef = this.dialog.open(ModalChargesComponent, {
+      width: '50em',
       data: {}
     });
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.vehiclesService.delVehicle(vehicle.uid).subscribe(() => {
-          this.getVehicles();
+        this.chargeService.addCharges(result).subscribe((added) => {
+          this.getCharges();
         });
       }
     });
   }
 
-  delete(vehicle: Vehicle, client: Client) {
-    // FAZER DIALOG DE CONFIRMACAO//
+  deleteVehicle(vehicle: Vehicle) {
     const dialogRef = this.dialog.open(AlertModalComponent, {
       width: '400px',
       data: { mensage: 'Deseja mesmo deletar este campo?' }
@@ -96,13 +100,36 @@ export class UsersListComponent implements OnInit {
         this.vehiclesService.delVehicle(vehicle.uid).subscribe(() => {
           this.getVehicles();
         });
-      } else {
+      }
+    });
+  }
+
+  deleteCharges(charge: ChargePoints) {
+    const dialogRef = this.dialog.open(AlertModalComponent, {
+      width: '400px',
+      data: { mensage: 'Deseja mesmo deletar este campo?' }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === charge) {
+        this.chargeService.delCharges(charge.uid).subscribe(() => {
+          this.getCharges();
+        });
+      }
+    });
+  }
+
+  deleteUser(client: Client) {
+    const dialogRef = this.dialog.open(AlertModalComponent, {
+      width: '400px',
+      data: { mensage: 'Deseja mesmo deletar este campo?' }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === client) {
         this.userService.delUser(client.uid).subscribe(() => {
           this.getUsers();
         });
       }
     });
-
   }
 
   editUsers(pUser) {
@@ -131,6 +158,21 @@ export class UsersListComponent implements OnInit {
       if (result) {
         this.vehiclesService.editVehicle(result).subscribe(() => {
           this.getVehicles();
+        });
+      }
+    });
+  }
+
+  editCharges(pCharge) {
+    const dialogRef = this.dialog.open(ModalChargesComponent, {
+      width: '50em',
+      data: { charge: pCharge, action: 'edit' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.chargeService.editCharges(result).subscribe(() => {
+          this.getCharges();
         });
       }
     });

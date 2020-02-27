@@ -4,6 +4,7 @@ import { ResponseData } from '../model/responsedata';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ChargePoints } from '../model/charge-points';
 
 @Injectable({
   providedIn: 'root'
@@ -18,24 +19,24 @@ export class ChargeService {
       'Content-Type': 'application/json'
     };
   }
-  // public getCharges(): Observable<Charge[]> {
-  //   return this.http.get(environment.apiURL + '/charges', { headers: this.getHeaders() })
-  //     .pipe(map((response: ResponseData) => response.data as Charge[]));
-  // }
+  public getCharges(): Observable<ChargePoints[]> {
+    return this.http.get(environment.apiURL + '/charges', { headers: this.getHeaders() })
+      .pipe(map((response: ResponseData) => response.data as ChargePoints[]));
+  }
 
-  // public addCharges(pVehicle: Charge): Observable<Charge> {
-  //   return this.http.post(environment.apiURL + '/charges/add', { vehicle: pVehicle }, { headers: this.getHeaders() })
-  //     .pipe(map((response: ResponseData) => response.data as Charge));
-  // }
+  public addCharges(pVehicle: ChargePoints): Observable<ChargePoints> {
+    return this.http.post(environment.apiURL + '/charges/add', { vehicle: pVehicle }, { headers: this.getHeaders() })
+      .pipe(map((response: ResponseData) => response.data as ChargePoints));
+  }
 
-  // public editCharges(pVehicle: Charge): Observable<Charge> {
-  //   return this.http.patch(environment.apiURL + '/charges', { vehicle: pVehicle }, { headers: this.getHeaders() })
-  //     .pipe(map((response: ResponseData) => response.data as Charge));
-  // }
+  public editCharges(pVehicle: ChargePoints): Observable<ChargePoints> {
+    return this.http.patch(environment.apiURL + '/charges', { vehicle: pVehicle }, { headers: this.getHeaders() })
+      .pipe(map((response: ResponseData) => response.data as ChargePoints));
+  }
 
-  // public delCharges(vuid: string): Observable<boolean> {
-  //   return this.http.delete(environment.apiURL + '/charges' + vuid, { headers: this.getHeaders() })
-  //     .pipe(map((response: ResponseData) => response.data as boolean));
-  // }
+  public delCharges(vuid: string): Observable<boolean> {
+    return this.http.delete(environment.apiURL + '/charges' + vuid, { headers: this.getHeaders() })
+      .pipe(map((response: ResponseData) => response.data as boolean));
+  }
 
 }

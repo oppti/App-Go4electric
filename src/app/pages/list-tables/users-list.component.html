@@ -6,18 +6,67 @@
         <div class="card shadow p-3 mb-2 bg-white rounded">
           <div class="card-body pl-0 pr-2 pb-0">
             <div class="float-left white-text pl-4">
+              <span class="font-weight-light mb-1 mt-n1 text-black-50 font-small p-3">Total charge points</span>
               <p>
                 <i class="fa fa-bolt pr-2 align-text-top mt-n1 icon icon-blue"></i>
                 <span class="font-weight-light h3">Pontos de Recarga</span>
               </p>
-              <p class="font-weight-light mb-1 mt-n1 text-black-50 font-small p-3">Total charge points</p>
+            </div>
+            <div class="float-left white-text pl-4">
+              <form class="form-inline mr-auto">
+                <div class="md-form my-0">
+                  <input class="form-control" type="text" placeholder="Search" name="Search"
+                    [(ngModel)]="searchTextCharges" [ngModelOptions]="{standalone: true}" autocomplete="off">
+                  <span class="btn btn-primary shadow-lg btn-rounded mb-1 text-center ml-1" cdkFocusInitial
+                    type="button">
+                    <i class="fa fa-search fa-1.8x text-white" aria-hidden="true"></i>
+                  </span>
+                </div>
+              </form>
             </div>
             <div class="btn-group float-right pr-3" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-sm btn-primary shadow-md rounded" id="accountsUsers">New
+              <button type="button" class="btn btn-sm btn-primary shadow-md rounded" id="accountsCharges"
+                (click)="insertCharges()">New
                 Point</button>
               <p class="p-1"></p>
             </div>
             <!-- table -->
+            <div class="card-body pt-3 table-striped">
+              <div class="table-responsive min-card">
+                <table class="table table-hover text-black mb-0">
+                  <thead class="#">
+                    <tr>
+                      <th>Name</th>
+                      <th>location</th>
+                      <th>connectorType</th>
+                      <th>price</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let chargePoint of chargeList | filter:searchTextCharges">
+                      <th scope="row">{{ chargePoint.name }}</th>
+                      <td> {{ chargePoint.location }}</td>
+                      <td>{{ chargePoint.connectorType }}</td>
+                      <td>{{ chargePoint.price }}</td>
+                      <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-primary shadow-md rounded mr-2"
+                            (click)="editCharges(charge)">
+                            <span class="fa fa-pencil"></span>
+                          </button>
+                          <button type="button" class="btn btn-primary shadow-md rounded mr-2"
+                            (click)="deleteCharges(charge)">
+                            <span class="fa fa-remove"> </span>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- end table -->
           </div>
         </div>
       </div>
@@ -121,8 +170,12 @@
                           (click)="editUsers(client)">
                           <span class="fa fa-pencil"></span>
                         </button>
-                        <button type="button" class="btn btn-primary shadow-md rounded mr-2" (click)="delete(client)">
+                        <button type="button" class="btn btn-primary shadow-md rounded mr-2"
+                          (click)="deleteUser(client)">
                           <span class="fa fa-remove"> </span>
+                        </button>
+                        <button type="button" class="btn btn-primary shadow-md rounded">
+                          <span class="fa fa-bolt"> </span>
                         </button>
                       </div>
                     </td>
@@ -193,7 +246,8 @@
                           (click)="editVehicles(vehicle)">
                           <span class="fa fa-pencil"></span>
                         </button>
-                        <button type="button" class="btn btn-primary shadow-md rounded mr-2" (click)="delete(vehicle)">
+                        <button type="button" class="btn btn-primary shadow-md rounded mr-2"
+                          (click)="deleteVehicle(vehicle)">
                           <span class="fa fa-remove"> </span>
                         </button>
                       </div>
