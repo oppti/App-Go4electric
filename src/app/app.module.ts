@@ -38,6 +38,9 @@ import { PerformanceComponent } from './components/performance/performance.compo
 import { ModalChargesComponent } from './components/modal-charges/modal-charges.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SocketComponent } from './pages/socket/socket.component';
+import { ChargeListComponent } from './components/charge-list/charge-list.component';
+import { MinCardsComponent } from './components/min-cards/min-cards.component';
+import { VehicleListComponent } from './components/vehicle-list/vehicle-list.component';
 
 
 @NgModule({
@@ -56,6 +59,9 @@ import { SocketComponent } from './pages/socket/socket.component';
     ModalChargesComponent,
     NotFoundComponent,
     SocketComponent,
+    ChargeListComponent,
+    MinCardsComponent,
+    VehicleListComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

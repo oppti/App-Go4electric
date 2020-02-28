@@ -1,0 +1,78 @@
+<main class="pt-3">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <!-- Card -->
+                <div class="card card-table shadow p-3 mb-2 bg-white rounded">
+                    <div class="card-color rounded d-flex justify-content-between">
+                        <div class="d-flex justify-content-start">
+                            <h5 class="my-2 text-white">Vehicles Table</h5>
+                        </div>
+                        <div class="md-form mt-0">
+                            <form class="form-inline mr-auto">
+                                <div class="md-form my-0">
+                                    <input class="form-control" type="text" placeholder="Search" name="Search"
+                                        [(ngModel)]="searchTextVehicles" [ngModelOptions]="{standalone: true}"
+                                        autocomplete="off">
+                                    <button class="btn btn-primary shadow-lg btn-rounded mb-1 text-center ml-1"
+                                        cdkFocusInitial type="button">
+                                        <i class="fa fa-search fa-1.8x text-white" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Card content -->
+                    <div class="card-body pt-3 table-striped">
+                        <div class="table-responsive min-card">
+                            <table class="table table-hover text-black mb-0">
+                                <thead class="#">
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Model</th>
+                                        <th>Vehicle</th>
+                                        <th>Connector</th>
+                                        <th>
+                                            <!-- button -->
+                                            <div class="btn-group float-right pr-3" role="group"
+                                                aria-label="Basic example">
+                                                <button type="button" class="btn btn-sm btn-primary shadow-md rounded"
+                                                    id="addUsers" type="button" (click)="insertVehicles()">
+                                                    <span href="" class="fa fa-plus" data-toggle="modal"
+                                                        data-target="#modalLoginAvatar">Add</span>
+                                                </button>
+                                                <p class="p-1"></p>
+                                            </div>
+                                            <!-- end -->
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let vehicle of vehicleList | filter:searchTextVehicles">
+                                        <th scope="row">{{ vehicle.name}}</th>
+                                        <td> {{ vehicle.model}}</td>
+                                        <td>{{ vehicle.type}}</td>
+                                        <td>{{ vehicle.connectorType}}</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-primary shadow-md rounded mr-2"
+                                                    (click)="editVehicles(vehicle)">
+                                                    <span class="fa fa-pencil"></span>
+                                                </button>
+                                                <button type="button" class="btn btn-primary shadow-md rounded mr-2"
+                                                    (click)="deleteVehicle(vehicle)">
+                                                    <span class="fa fa-remove"> </span>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
