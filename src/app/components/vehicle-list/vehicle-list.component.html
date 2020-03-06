@@ -1,78 +1,67 @@
-<main class="pt-3">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6 mb-4">
-                <!-- Card -->
-                <div class="card card-table shadow p-3 mb-2 bg-white rounded">
-                    <div class="card-color rounded d-flex justify-content-between">
-                        <div class="d-flex justify-content-start">
-                            <h5 class="my-2 text-white">Vehicles Table</h5>
-                        </div>
-                        <div class="md-form mt-0">
-                            <form class="form-inline mr-auto">
-                                <div class="md-form my-0">
-                                    <input class="form-control" type="text" placeholder="Search" name="Search"
-                                        [(ngModel)]="searchTextVehicles" [ngModelOptions]="{standalone: true}"
-                                        autocomplete="off">
-                                    <button class="btn btn-primary shadow-lg btn-rounded mb-1 text-center ml-1"
-                                        cdkFocusInitial type="button">
-                                        <i class="fa fa-search fa-1.8x text-white" aria-hidden="true"></i>
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- Card content -->
-                    <div class="card-body pt-3 table-striped">
-                        <div class="table-responsive min-card">
-                            <table class="table table-hover text-black mb-0">
-                                <thead class="#">
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Model</th>
-                                        <th>Vehicle</th>
-                                        <th>Connector</th>
-                                        <th>
-                                            <!-- button -->
-                                            <div class="btn-group float-right pr-3" role="group"
-                                                aria-label="Basic example">
-                                                <button type="button" class="btn btn-sm btn-primary shadow-md rounded"
-                                                    id="addUsers" type="button" (click)="insertVehicles()">
-                                                    <span href="" class="fa fa-plus" data-toggle="modal"
-                                                        data-target="#modalLoginAvatar">Add</span>
-                                                </button>
-                                                <p class="p-1"></p>
-                                            </div>
-                                            <!-- end -->
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let vehicle of vehicleList | filter:searchTextVehicles">
-                                        <th scope="row">{{ vehicle.name}}</th>
-                                        <td> {{ vehicle.model}}</td>
-                                        <td>{{ vehicle.type}}</td>
-                                        <td>{{ vehicle.connectorType}}</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary shadow-md rounded mr-2"
-                                                    (click)="editVehicles(vehicle)">
-                                                    <span class="fa fa-pencil"></span>
-                                                </button>
-                                                <button type="button" class="btn btn-primary shadow-md rounded mr-2"
-                                                    (click)="deleteVehicle(vehicle)">
-                                                    <span class="fa fa-remove"> </span>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+<div class="card card-table shadow mb-3 bg-white rounded">
+    <div class="card-header-primary rounded d-flex justify-content-between">
+        <div class="d-flex justify-content-start">
+            <h5 class="my-2 text-white">Veículos</h5>
+        </div>
+        <div class="md-form mt-0">
+            <form class="form-inline mr-auto">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search" name="Search"
+                        [(ngModel)]="searchTextVehicles" [ngModelOptions]="{standalone: true}" autocomplete="off">
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <i class="fa fa-search fa-1.8x" aria-hidden="true"></i>
+                        </span>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
-</main>
+
+    <!-- Card content -->
+    <div class="card-body p-0 ">
+        <div class="table-responsive dashbard-card">
+            <table class="table table-striped table-hover text-black mb-0">
+                <thead class="#">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Modelo</th>
+                        <th>Tipo</th>
+                        <th>Tipo de Conector</th>
+                        <th class="text-right align-items-right">
+                            <!-- button -->
+                            <div class="btn-group float-right">
+                                <button type="button" title="Adicionar" class="btn btn-sm btn-primary shadow-md rounded" type="button"
+                                    (click)="insertVehicles()">
+                                    <i class="fa fa-plus pr-2"></i> Adicionar
+                                </button>
+                                <p class="p-1"></p>
+                            </div>
+                            <!-- end -->
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let vehicle of vehicleList | filter:searchTextVehicles">
+                        <th scope="row">{{ vehicle.name}}</th>
+                        <td> {{ vehicle.model}}</td>
+                        <td>{{ vehicle.type}}</td>
+                        <td>{{ vehicle.connectorType}}</td>
+                        <td class="text-right">
+                            <div class="btn-group">
+                                <button type="button" title="Editar" class="btn btn-primary shadow-md rounded mr-2"
+                                    (click)="editVehicles(vehicle)">
+                                    <span class="fa fa-pencil"></span>
+                                </button>
+                                <button type="button" title="Excluir" class="btn btn-primary shadow-md rounded mr-2"
+                                    (click)="deleteVehicle(vehicle)">
+                                    <span class="fa fa-trash"> </span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

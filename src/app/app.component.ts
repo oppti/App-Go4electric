@@ -9,7 +9,7 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'go4electric-web';
+  title = 'Go4electric';
 
   constructor(public http: HttpClient, private router: Router, private authService: AuthService) {
     this.authService.isLogged().then(async (result) => {
@@ -24,7 +24,5 @@ export class AppComponent {
       this.authService.logout();
       this.router.navigate(['/login']);
     });
-
-
   }
 }

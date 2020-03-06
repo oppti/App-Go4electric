@@ -1,19 +1,20 @@
-<h1 mat-dialog-title>
-    <button type="button" (click)="closeClick(false)" class="close" data-dismiss="modal" aria-label="Close">
+<h5 mat-dialog-title>
+    &nbsp;
+    <button type="button" (click)="closeClick(false)" class="close" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
-</h1>
-<div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel"> {{mensage}}</h5>
+</h5>
+<div mat-dialog-content >
+    <div [innerHTML]="message"></div>
 </div>
 
-<div class="modal-footer d-flex justify-content-center">
-    <button class="btn btn-primary shadow-lg btn-rounded mb-1 text-center" type="button">
-        <span (click)="closeClick(false)" href="" class="#" data-toggle="modal"
-            data-target="#modalContactForm">Cancel</span>
+<div class="modal-footer d-flex justify-content-end border-0 mt-4">
+    <button class="btn btn-primary shadow-lg btn-rounded mb-1 text-center" cdkFocusInitial type="button">
+        <span href="#" (click)="closeClick(true)" data-target="#modalContactForm">OK</span>
     </button>
 
-    <button class="btn btn-primary shadow-lg btn-rounded mb-1 text-center" cdkFocusInitial type="button">
-        <span href="#" (click)="closeClick(true)" data-target="#modalContactForm">ok</span>
+    <button *ngIf="type != 'alert'" class="btn btn-primary shadow-lg btn-rounded mb-1 text-center" type="button">
+        <span (click)="closeClick(false)" href="" class="#" data-toggle="modal"
+            data-target="#modalContactForm">Cancelar</span>
     </button>
 </div>

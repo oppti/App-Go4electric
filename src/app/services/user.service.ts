@@ -5,11 +5,14 @@ import { Client } from '../model/client';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { ResponseData } from '../model/responsedata';
+import { Billingstatus } from '../model/billingstatus.enum';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
+  private _ENDPOINT = 'users';
 
   constructor(private http: HttpClient) { }
 
@@ -21,18 +24,32 @@ export class UserService {
   }
 
   public getUsers(): Observable<Client[]> {
-    return this.http.get(environment.apiURL + '/users', { headers: this.getHeaders() })
+    return this.http.get(environment.apiURL + this._ENDPOINT, { headers: this.getHeaders() })
       .pipe(map((response: ResponseData) => response.data as Client[]));
   }
 
   public editUser(pUser: Client): Observable<Client> {
-    return this.http.patch(environment.apiURL + '/users/', { client: pUser }, { headers: this.getHeaders() })
+    return this.http.patch(environment.apiURL + this._ENDPOINT, { client: pUser }, { headers: this.getHeaders() })
       .pipe(map((response: ResponseData) => response.data as Client));
   }
 
-  public delUser(vuid: string): Observable<boolean> {
-    return this.http.delete(environment.apiURL + '/users/' + vuid, { headers: this.getHeaders() })
-      .pipe(map((response: ResponseData) => response.data as boolean));
+  public changeStatus(pUser: Client, newStatus: Billingstatus): Observable<Client> {
+    return this.http.post(environment.apiURL + this._ENDPOINT + '/' + pUser.uid + '/changeStatus',
+      { billStatus: newStatus }, { headers: this.getHeaders() })
+      .pipe(map((response: ResponseData) => response.data as Client));
+  }
+
+  public genKeyID(pUser: Client): Observable<string[]> {
+    return this.http.post(environment.apiURL + this._ENDPOINT + '/' + pUser.uid + '/genKey',
+      { userID: pUser.uid }, { headers: this.getHeaders() })
+      .pipe(map((response: ResponseData) => response.data as string[]));
+  }
+
+  // We never should del user.
+  public delUser(pUser: Client): Observable<Client> {
+    return this.http.post(environment.apiURL + this._ENDPOINT + '/' + pUser.uid + '/changeStatus',
+    { billStatus: Billingstatus.canceled }, { headers: this.getHeaders() })
+    .pipe(map((response: ResponseData) => response.data as Client));
   }
 
 }

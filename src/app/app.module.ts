@@ -20,7 +20,7 @@ import { LoaderService } from './services/loader.service';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { LoaderInterceptor } from './services/loader.interceptor';
 import { TopbarComponent } from './components/topbar/topbar.component';
-import { UsersListComponent } from './pages/list-tables/users-list.component';
+import { UsersListComponent } from './components/users-list/users-list.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ModalUsersComponent } from './components/modal-users/modal-users.component';
 import { ModalVehiclesComponent } from './components/modal-vehicles/modal-vehicles.component';
@@ -36,11 +36,10 @@ import { AlertModalComponent } from './components/alert-modal/alert-modal.compon
 import { ListRecargaComponent } from './components/list-recarga/list-recarga.component';
 import { PerformanceComponent } from './components/performance/performance.component';
 import { ModalChargesComponent } from './components/modal-charges/modal-charges.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { SocketComponent } from './pages/socket/socket.component';
 import { ChargeListComponent } from './components/charge-list/charge-list.component';
 import { MinCardsComponent } from './components/min-cards/min-cards.component';
 import { VehicleListComponent } from './components/vehicle-list/vehicle-list.component';
+import { CellphonePipe } from './cellphone.pipe';
 
 
 @NgModule({
@@ -57,11 +56,10 @@ import { VehicleListComponent } from './components/vehicle-list/vehicle-list.com
     ListRecargaComponent,
     PerformanceComponent,
     ModalChargesComponent,
-    NotFoundComponent,
-    SocketComponent,
     ChargeListComponent,
     MinCardsComponent,
     VehicleListComponent,
+    CellphonePipe,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

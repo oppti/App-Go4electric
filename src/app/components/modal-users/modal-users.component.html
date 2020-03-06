@@ -1,16 +1,23 @@
-<h1 mat-dialog-title>{{title}}
+<h1 mat-dialog-title>
+    {{title}}
     <button type="button" (click)="closeClick()" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
 </h1>
+
+
 <div mat-dialog-content>
     <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Client Name" [(ngModel)]="client.name">
+        <label for="phone">Telefone</label>
+        <input type="text" disabled class="form-control" id="phone" placeholder="Telefone" [value]="client.phone | cellphone">
+    </div>
+    <div class="form-group">
+        <label for="cpf">CPF</label>
+        <input type="text" disabled class="form-control" id="cpf" placeholder="CPF" [value]="client.cpf">
     </div>
     <div class="form-group">
         <label for="brand">Email</label>
-        <input type="text" class="form-control" id="brand" placeholder="your Email" [(ngModel)]="client.email">
+        <input type="text" disabled class="form-control" id="brand" placeholder="Email" [value]="client.email">
     </div>
     <div class="form-group">
         <label for="Status">Status</label>
@@ -19,17 +26,21 @@
                 {{status}}</option>
         </select>
     </div>
+    <div class="form-group">
+        <label class="w-100">KeyID
+            <button class="float-right btn btn-primary btn-rounded" type="button" (click)="genKey()">
+                Nova KeyID
+            </button>
+        </label>
+        <p class="key-id" *ngFor="let key of client.keyID">{{ key }}</p>
+    </div>
 </div>
 
-<div class="modal-footer d-flex justify-content-center">
+<div class="modal-footer justify-content-end">
+    <button class="btn btn-primary shadow-lg btn-rounded mb-1 text-center" cdkFocusInitial type="button">
+        <span href="" class="#" data-toggle="modal" data-target="#modalContactForm" (click)="save()">Salvar</span>
+    </button>
     <button class="btn btn-primary shadow-lg btn-rounded mb-1 text-center" type="button">
-        <span href="" class="#" data-toggle="modal" data-target="#modalContactForm" (click)="closeClick()">Cancel</span>
-    </button>
-
-    <button class="btn btn-primary shadow-lg btn-rounded mb-1 text-center" cdkFocusInitial type="button">
-        <span href="" class="#" data-toggle="modal" data-target="#modalContactForm" (click)="save()">Save</span>
-    </button>
-    <button class="btn btn-primary shadow-lg btn-rounded mb-1 text-center" cdkFocusInitial type="button">
-        <span href="" class="#" data-toggle="modal" data-target="#modalContactForm">Bloquear</span>
+        <span href="" class="#" data-toggle="modal" data-target="#modalContactForm" (click)="closeClick()">Cancelar</span>
     </button>
 </div>

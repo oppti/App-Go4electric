@@ -2,16 +2,11 @@
 @import "variables";
 @import "~bootstrap/scss/bootstrap";
 
-
 html,
 body {
-  height: 100%;
   background-color: $secondary !important;
 }
 
-.container-fluid {
-  height: 100%;
-}
 
 .btn-primary,
 .btn-primary:visited {
@@ -31,9 +26,42 @@ body {
   border-color: $primary !important;
 }
 
+.btn-secondary,
+.btn-secondary:visited {
+  background-color: $secondary !important;
+  border-color: $secondary !important;
+}
+
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary:focus {
+    background-color: $secondary-hover !important;
+    border-color: $secondary-hover !important;
+}
+
+.btn-secondary:disabled {
+  background-color: $secondary-disabled !important;
+  border-color: $secondary !important;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.icon-success {
+  color: $success;
+}
+
+.icon-error {
+  color: $error;
+}
+
+.dashbard-card {
+  max-height: 20em;
+}
+
+.card-header-primary {
+  padding: 0.5rem 0.7rem;
+  margin-bottom: 0;
+  background-color: $primary;
+}

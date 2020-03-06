@@ -5,9 +5,10 @@ export class Client {
     name: string;
     email: string;
     // birthday: admin.firestore.Timestamp;
+    phone: string;
     cpf: string;
     photo: string;  // should be an URL
     fcmToken: string[];
-    keyID: string;
+    keyID: string[];
     billingStatus: Billingstatus;
 }

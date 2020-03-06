@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {
-    HttpErrorResponse,
     HttpResponse,
     HttpRequest,
     HttpHandler,
@@ -38,7 +37,6 @@ export class LoaderInterceptor implements HttpInterceptor {
                         }
                     },
                     err => {
-                        alert('error returned');
                         this.removeRequest(req);
                         observer.error(err);
                     },
