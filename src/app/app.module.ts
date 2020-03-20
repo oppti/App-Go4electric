@@ -33,7 +33,6 @@ import { NgxMaskModule } from 'node_modules/ngx-mask/';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AlertModalComponent } from './components/alert-modal/alert-modal.component';
-import { ListRecargaComponent } from './components/list-recarga/list-recarga.component';
 import { PerformanceComponent } from './components/performance/performance.component';
 import { ModalChargesComponent } from './components/modal-charges/modal-charges.component';
 import { ChargeListComponent } from './components/charge-list/charge-list.component';
@@ -59,7 +58,6 @@ import { ChargerPagesComponent } from './pages/charger-pages/charger-pages.compo
     ModalUsersComponent,
     ModalVehiclesComponent,
     AlertModalComponent,
-    ListRecargaComponent,
     PerformanceComponent,
     ModalChargesComponent,
     ChargeListComponent,

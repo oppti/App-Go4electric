@@ -97,29 +97,3 @@
 .dark-skin .side-nav .collapsible li a:not(.collapsible-header):active {
   color: #67d5ff !important;
 }
-
-.min-card {
-  min-height: 600px;
-  height: 600px;
-  overflow-y: auto;
-}
-
-.min-list-charge {
-  min-height: 400px;
-  height: 400px;
-  overflow-y: auto;
-}
-
-.min-cardzinho {
-  height: 150;
-  position: relative;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-}
