@@ -1,20 +1,20 @@
 <div class="text-right mb-3">
     <button title="Adicionar veículo" class="btn btn-primary"
         (click)="insertVehicles()">
-        <i class="fa fa-plus pr-2"></i> Adicionar Veículo
+        <i class="fa fa-plus pr-2"></i> Adicionar Conector
     </button>
 </div>
 <div>
     <div class="card card-table shadow mb-3 bg-white rounded">
         <div class="card-header-primary rounded d-flex justify-content-between">
             <div class="d-flex justify-content-start">
-                <h5 class="my-2 text-white">Veículos</h5>
+                <h5 class="my-2 text-white">Tipo de Conectores</h5>
             </div>
             <div class="md-form mt-0">
                 <form class="form-inline mr-auto">
                     <div class="input-group">
                         <input class="form-control" type="text" placeholder="Search" name="Search"
-                            [(ngModel)]="searchTextVehicles" [ngModelOptions]="{standalone: true}" autocomplete="off">
+                            [(ngModel)]="searchTextConnector" [ngModelOptions]="{standalone: true}" autocomplete="off">
                         <div class="input-group-append">
                             <span class="input-group-text">
                                 <i class="fa fa-search fa-1.8x" aria-hidden="true"></i>
@@ -33,8 +33,7 @@
                         <tr>
                             <th>Nome</th>
                             <th>Modelo</th>
-                            <th>Tipo</th>
-                            <th>Tipo de Conector</th>
+                            <th>Corrent</th>
                             <th class="text-right align-items-right">
                                 <!-- button -->
 
@@ -43,19 +42,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let vehicle of vehicleList | filter:searchTextVehicles">
-                            <th scope="row">{{ vehicle.name}}</th>
-                            <td> {{ vehicle.model}}</td>
-                            <td>{{ vehicle.type}}</td>
-                            <td>{{ vehicle.connectorType}}</td>
+                        <tr *ngFor="let connector of connectorList | filter:searchTextConnector">
+                            <th scope="row">{{ connector.name}}</th>
+                            <td> {{ connector.model}}</td>
+                            <td>{{ connector.current}}</td>
                             <td class="text-right">
                                 <div class="btn-group">
                                     <button type="button" title="Editar" class="btn btn-primary shadow-md rounded mr-2"
-                                        (click)="editVehicles(vehicle)">
+                                        (click)="editConnector(connector)">
                                         <span class="fa fa-pencil"></span>
                                     </button>
                                     <button type="button" title="Excluir" class="btn btn-primary shadow-md rounded mr-2"
-                                        (click)="deleteVehicle(vehicle)">
+                                        (click)="deleteConnector(connector)">
                                         <span class="fa fa-trash"> </span>
                                     </button>
                                 </div>

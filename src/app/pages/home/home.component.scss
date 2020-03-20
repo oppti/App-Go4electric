@@ -1,11 +1,16 @@
+@import "variables";
+
+.content-page {
+  margin-left: 17em;
+  padding: 3em;
+  position: relative;
+  z-index: 1;
+  max-width: calc(100% - 17em);
+}
+
 .content-body {
   padding-top: 1em;
 }
-
-// new css
-
-@import "variables";
-// new css//
 
 .card-color {
   padding: 0.75rem 1.25rem;

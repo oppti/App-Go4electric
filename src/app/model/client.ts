@@ -2,6 +2,7 @@ import { Billingstatus } from './billingstatus.enum';
 
 export class Client {
     uid: string;
+    displayName: string;
     name: string;
     email: string;
     // birthday: admin.firestore.Timestamp;

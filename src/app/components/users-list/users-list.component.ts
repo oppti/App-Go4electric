@@ -31,7 +31,7 @@ export class UsersListComponent implements OnInit {
 
   getUsers() {
     this.userService.getUsers().subscribe((clients: Client[]) => {
-      this.clientList = clients;
+      this.clientList = clients.sort((a,b) => a.displayName.localeCompare(b.displayName));
     });
   }
 

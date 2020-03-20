@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { ChargePoints } from 'src/app/model/charge-points';
+import { Charger } from 'src/app/model/charger';
 import { ConnectorType } from 'src/app/model/connector-type.enum';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -11,7 +11,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ModalChargesComponent {
 
   public publicData = { charge: null, action: null };
-  public charge: ChargePoints;
+  public charge: Charger;
   public title = '';
   public connectorList: any[];
 
@@ -27,7 +27,7 @@ export class ModalChargesComponent {
       this.title = this.charge.name;
     } else {
       this.title = 'New Charge';
-      this.charge = new ChargePoints();
+      this.charge = new Charger();
     }
 
     this.connectorList = Object.keys(this.connectorType);

@@ -1,7 +1,6 @@
 <div class="card card-table shadow mb-3 bg-white rounded">
   <div class="card-header-primary rounded d-flex justify-content-between">
     <div class="d-flex justify-content-start">
-      <h5 class="my-2 text-white">Clientes</h5>
     </div>
     <div class="md-form mt-0">
       <form class="form-inline mr-auto">
@@ -19,22 +18,22 @@
   </div>
   <!-- Card content -->
   <div class="card-body p-0">
-    <div class="table-responsive dashbard-card">
+    <div class="table-responsive">
       <table class="table table-hover table-striped text-black mb-0">
         <thead class="#">
           <tr>
             <th>Nome</th>
             <th>Telefone</th>
-            <th>Email</th>
+            <th>CPF</th>
             <th class="text-center">Status</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let client of clientList | filter:searchTextUsers">
-            <td scope="row">{{ client.name }}</td>
+            <td scope="row">{{ client.name || client.displayName }}</td>
             <td> {{ client.phone | cellphone }}</td>
-            <td> {{ client.email }}</td>
+            <td> {{ client.cpf }}</td>
             <td class="text-center">
               <ng-container *ngIf="client.billingStatus === 'active'">
                 <i class="fa fa-circle icon-success"></i>

@@ -4,7 +4,7 @@ import { ResponseData } from '../model/responsedata';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ChargePoints } from '../model/charge-points';
+import { Charger } from '../model/charger';
 
 @Injectable({
   providedIn: 'root'
@@ -19,19 +19,19 @@ export class ChargeService {
       'Content-Type': 'application/json'
     };
   }
-  public getCharges(): Observable<ChargePoints[]> {
-    return this.http.get(environment.apiURL + '/chargers', { headers: this.getHeaders() })
-      .pipe(map((response: ResponseData) => response.data as ChargePoints[]));
+  public getCharges(): Observable<Charger[]> {
+    return this.http.get(environment.apiURL + 'chargers', { headers: this.getHeaders() })
+      .pipe(map((response: ResponseData) => response.data as Charger[]));
   }
 
-  public addCharges(pVehicle: ChargePoints): Observable<ChargePoints> {
+  public addCharges(pVehicle: Charger): Observable<Charger> {
     return this.http.post(environment.apiURL + '/chargers/add', { vehicle: pVehicle }, { headers: this.getHeaders() })
-      .pipe(map((response: ResponseData) => response.data as ChargePoints));
+      .pipe(map((response: ResponseData) => response.data as Charger));
   }
 
-  public editCharges(pVehicle: ChargePoints): Observable<ChargePoints> {
+  public editCharges(pVehicle: Charger): Observable<Charger> {
     return this.http.patch(environment.apiURL + '/chargers', { vehicle: pVehicle }, { headers: this.getHeaders() })
-      .pipe(map((response: ResponseData) => response.data as ChargePoints));
+      .pipe(map((response: ResponseData) => response.data as Charger));
   }
 
   public delCharges(vuid: string): Observable<boolean> {

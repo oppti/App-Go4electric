@@ -40,6 +40,12 @@ import { ChargeListComponent } from './components/charge-list/charge-list.compon
 import { MinCardsComponent } from './components/min-cards/min-cards.component';
 import { VehicleListComponent } from './components/vehicle-list/vehicle-list.component';
 import { CellphonePipe } from './cellphone.pipe';
+import { LeftMenuComponent } from './components/left-menu/left-menu.component';
+import { ClientPageComponent } from './pages/client-page/client-page.component';
+import { VehiclePageComponent } from './pages/vehicle-page/vehicle-page.component';
+import { ConnectorsListComponent } from './components/connectors-list/connectors-list.component';
+import { ModalConnectorsComponent } from './components/modal-connectors/modal-connectors.component';
+import { ChargerPagesComponent } from './pages/charger-pages/charger-pages.component';
 
 
 @NgModule({
@@ -60,6 +66,12 @@ import { CellphonePipe } from './cellphone.pipe';
     MinCardsComponent,
     VehicleListComponent,
     CellphonePipe,
+    LeftMenuComponent,
+    ClientPageComponent,
+    VehiclePageComponent,
+    ConnectorsListComponent,
+    ModalConnectorsComponent,
+    ChargerPagesComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

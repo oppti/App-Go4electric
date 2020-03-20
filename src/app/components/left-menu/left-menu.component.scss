@@ -1,0 +1,46 @@
+@import "variables";
+
+
+.left-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 17em;
+    z-index: 99;
+    padding-top: 2em;
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    
+    & .list-group {
+        background-color: transparent;
+        & .list-group-item {
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-size: 0.8em;
+
+            & fa {
+                font-size: 1.5em
+            }
+        }
+
+        & .list-group-item.active {
+            background-color: $primary-dark;
+            color: white;
+            border-color: $primary-hover;
+        }
+
+        & .list-group-item:hover {
+            background-color: $primary-hover;
+            color: white;
+        }
+
+        & .list-group-item:focus {
+            border: none;
+            outline: none;
+        }
+    }
+}
