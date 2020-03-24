@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ClientPageComponent } from './pages/client-page/client-page.component';
 import { VehiclePageComponent } from './pages/vehicle-page/vehicle-page.component';
 import { ChargerPagesComponent } from './pages/charger-pages/charger-pages.component';
+import { CondominumPageComponent } from './pages/condominum-page/condominum-page.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
     children: [
       { path: 'clients', component: ClientPageComponent },
       { path: 'vehicles', component: VehiclePageComponent },
-      { path: 'chargers', component: ChargerPagesComponent }
+      { path: 'chargers', component: ChargerPagesComponent },
+      { path: 'condominiums',  component: CondominumPageComponent}
     ]
   },
 

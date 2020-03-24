@@ -4,6 +4,7 @@ import { Vehicle } from 'src/app/model/vehicle';
 import { ModalVehiclesComponent } from '../modal-vehicles/modal-vehicles.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AlertModalComponent } from '../alert-modal/alert-modal.component';
+import { AngularFireStorage } from 'angularfire2/storage';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -13,14 +14,21 @@ import { AlertModalComponent } from '../alert-modal/alert-modal.component';
 export class VehicleListComponent implements OnInit {
   vehicleList: Vehicle[];
 
-  constructor(private vehiclesService: VehiclesService, private dialog: MatDialog) { }
+  constructor(private vehiclesService: VehiclesService, private dialog: MatDialog,
+    private storage: AngularFireStorage) { }
 
   ngOnInit() {
     this.getVehicles();
   }
 
   getVehicles() {
-    this.vehiclesService.getVehicles().subscribe((vehicles) => {
+    this.vehiclesService.getVehicles().subscribe(async (vehicles) => {
+      for (const v of vehicles) {
+        for (const conn of v.connectorType) {
+          const icon = await this.storage.ref(conn.icon).getDownloadURL().toPromise();
+          conn.iconURL = icon;
+        }
+      }
       this.vehicleList = vehicles;
     });
   }

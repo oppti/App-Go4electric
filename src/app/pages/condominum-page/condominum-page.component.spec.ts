@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModalChargesComponent } from './modal-charges.component';
+import { CondominumPageComponent } from './condominum-page.component';
 
-describe('ModalChargesComponent', () => {
-  let component: ModalChargesComponent;
-  let fixture: ComponentFixture<ModalChargesComponent>;
+describe('CondominumPageComponent', () => {
+  let component: CondominumPageComponent;
+  let fixture: ComponentFixture<CondominumPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModalChargesComponent ]
+      declarations: [ CondominumPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModalChargesComponent);
+    fixture = TestBed.createComponent(CondominumPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

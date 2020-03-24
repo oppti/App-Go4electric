@@ -4,11 +4,11 @@ import { ConnectorType } from 'src/app/model/connector-type.enum';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-modal-charges',
-  templateUrl: './modal-charges.component.html',
-  styleUrls: ['./modal-charges.component.scss']
+  selector: 'app-modal-chargers',
+  templateUrl: './modal-chargers.component.html',
+  styleUrls: ['./modal-chargers.component.scss']
 })
-export class ModalChargesComponent {
+export class ModalChargersComponent {
 
   public publicData = { charge: null, action: null };
   public charge: Charger;
@@ -18,7 +18,7 @@ export class ModalChargesComponent {
   connectorType = ConnectorType;
 
   constructor(
-    public dialogRef: MatDialogRef<ModalChargesComponent>,
+    public dialogRef: MatDialogRef<ModalChargersComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
     Object.assign(this.publicData, data);
 

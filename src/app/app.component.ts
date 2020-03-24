@@ -15,7 +15,8 @@ export class AppComponent {
     this.authService.isLogged().then(async (result) => {
       const token = await result.getIdToken();
       if (result.uid === localStorage.getItem('uid') && token === localStorage.getItem('token')) {
-        this.router.navigate(['/home']);
+        //this.router.navigate(['/home']);
+        console.log('logged, contiue');
       } else {
         this.authService.logout();
         this.router.navigate(['/login']);

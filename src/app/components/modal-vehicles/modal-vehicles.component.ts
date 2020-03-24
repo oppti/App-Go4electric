@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Vehicle } from 'src/app/model/vehicle';
 import { ConnectorType } from 'src/app/model/connector-type.enum';
 import { VehicleType } from 'src/app/model/vehicle-type.enum';
+import { ConnectorService } from 'src/app/services/connector.service';
 
 @Component({
   selector: 'app-modal-vehicles',
@@ -16,8 +17,8 @@ export class ModalVehiclesComponent {
   public title = '';
   public connectorList: any[];
   public typeList: any[];
+  private receivedVehicle: Vehicle;
 
-  connectorType = ConnectorType;
   type = VehicleType;
 
   constructor(
@@ -26,23 +27,24 @@ export class ModalVehiclesComponent {
     Object.assign(this.publicData, data);
 
     if (data.action === 'edit') {
-      this.vehicle = data.vehicle;
+      this.receivedVehicle = data.vehicle;
+      this.vehicle = JSON.parse(JSON.stringify(data.vehicle)); // shallow copy
       this.title = this.vehicle.name;
     } else {
-      this.title = 'New Vehicle';
+      this.title = 'Novo Veículo';
       this.vehicle = new Vehicle();
     }
-
-    this.connectorList = Object.keys(this.connectorType);
     this.typeList = Object.keys(this.type);
-
   }
 
+
+
   closeClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(false);
   }
 
   save(): void {
+    this.receivedVehicle = this.vehicle;
     this.dialogRef.close(this.vehicle);
   }
 }

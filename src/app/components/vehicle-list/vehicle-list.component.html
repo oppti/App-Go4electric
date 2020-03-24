@@ -1,6 +1,5 @@
 <div class="text-right mb-3">
-    <button title="Adicionar veículo" class="btn btn-primary"
-        (click)="insertVehicles()">
+    <button title="Adicionar veículo" class="btn btn-primary" (click)="insertVehicles()">
         <i class="fa fa-plus pr-2"></i> Adicionar Veículo
     </button>
 </div>
@@ -28,7 +27,7 @@
         <!-- Card content -->
         <div class="card-body p-0 ">
             <div class="table-responsive dashbard-card">
-                <table class="table table-striped table-hover text-black mb-0">
+                <table class="table table-hover text-black mb-0">
                     <thead class="#">
                         <tr>
                             <th>Nome</th>
@@ -47,7 +46,11 @@
                             <th scope="row">{{ vehicle.name}}</th>
                             <td> {{ vehicle.model}}</td>
                             <td>{{ vehicle.type}}</td>
-                            <td>{{ vehicle.connectorType}}</td>
+                            <td>
+                                <span *ngFor="let connctor of vehicle.connectorType">
+                                    <img class="connector-type" [src]='connctor.iconURL' />
+                                </span>
+                            </td>
                             <td class="text-right">
                                 <div class="btn-group">
                                     <button type="button" title="Editar" class="btn btn-primary shadow-md rounded mr-2"

@@ -7,5 +7,5 @@ export class Vehicle {
     model: string;
     brand: string;
     type: VehicleType;
-    connectorType: ConnectorType;
+    connectorType: any[];
 }

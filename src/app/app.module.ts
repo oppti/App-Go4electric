@@ -34,7 +34,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AlertModalComponent } from './components/alert-modal/alert-modal.component';
 import { PerformanceComponent } from './components/performance/performance.component';
-import { ModalChargesComponent } from './components/modal-charges/modal-charges.component';
+import { ModalChargersComponent } from './components/modal-chargers/modal-chargers.component';
 import { ChargeListComponent } from './components/charge-list/charge-list.component';
 import { MinCardsComponent } from './components/min-cards/min-cards.component';
 import { VehicleListComponent } from './components/vehicle-list/vehicle-list.component';
@@ -45,6 +45,9 @@ import { VehiclePageComponent } from './pages/vehicle-page/vehicle-page.componen
 import { ConnectorsListComponent } from './components/connectors-list/connectors-list.component';
 import { ModalConnectorsComponent } from './components/modal-connectors/modal-connectors.component';
 import { ChargerPagesComponent } from './pages/charger-pages/charger-pages.component';
+import { CondominumPageComponent } from './pages/condominum-page/condominum-page.component';
+import { ConnectorSelectionComponent } from './components/connector-selection/connector-selection.component';
+import { AngularFireStorage } from 'angularfire2/storage';
 
 
 @NgModule({
@@ -59,7 +62,7 @@ import { ChargerPagesComponent } from './pages/charger-pages/charger-pages.compo
     ModalVehiclesComponent,
     AlertModalComponent,
     PerformanceComponent,
-    ModalChargesComponent,
+    ModalChargersComponent,
     ChargeListComponent,
     MinCardsComponent,
     VehicleListComponent,
@@ -70,6 +73,8 @@ import { ChargerPagesComponent } from './pages/charger-pages/charger-pages.compo
     ConnectorsListComponent,
     ModalConnectorsComponent,
     ChargerPagesComponent,
+    CondominumPageComponent,
+    ConnectorSelectionComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -94,7 +99,7 @@ import { ChargerPagesComponent } from './pages/charger-pages/charger-pages.compo
     ModalVehiclesComponent,
     AlertModalComponent
   ],
-  providers: [AuthService, LoaderService,
+  providers: [AuthService, LoaderService, AngularFireStorage,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })

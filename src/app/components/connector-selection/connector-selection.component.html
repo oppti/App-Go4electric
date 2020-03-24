@@ -1,0 +1,9 @@
+<ul class="list-group list-group-horizontal">
+    <li class="list-group-item" *ngFor="let connector of connectorList">
+        <div class='border-span text-center px-4' (click)="onClick(connector)"
+            [class.selected]="checkIsSelected(connector)">
+            <img class='connector-icon' [src]="connector.iconURL" />
+            <span class='connector-name'>{{ connector.name }}</span>
+        </div>
+    </li>
+</ul>

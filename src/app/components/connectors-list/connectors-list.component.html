@@ -28,9 +28,10 @@
         <!-- Card content -->
         <div class="card-body p-0 ">
             <div class="table-responsive dashbard-card">
-                <table class="table table-striped table-hover text-black mb-0">
+                <table class="table table-hover text-black mb-0">
                     <thead class="#">
                         <tr>
+                            <th></th>
                             <th>Nome</th>
                             <th>Modelo</th>
                             <th>Corrent</th>
@@ -43,6 +44,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let connector of connectorList | filter:searchTextConnector">
+                            <th><img class="connector-type" [src]='connector.icon' /></th>
                             <th scope="row">{{ connector.name}}</th>
                             <td> {{ connector.model}}</td>
                             <td>{{ connector.current}}</td>

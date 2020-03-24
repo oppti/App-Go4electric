@@ -38,11 +38,11 @@ export class UsersListComponent implements OnInit {
       data: { mensage: 'Deseja mesmo deletar este campo?' }
     });
     dialogRef.afterClosed().subscribe(result => {
-      if (result === client) {
-        this.userService.delUser(client.uid).subscribe(() => {
-          this.getUsers();
-        });
-      } else { }
+      // if (result === client) {
+      //   this.userService.delUser(client).subscribe(() => {
+      //     this.getUsers();
+      //   });
+      // } else { }
     });
   }
 

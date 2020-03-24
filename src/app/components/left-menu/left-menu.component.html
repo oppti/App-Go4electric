@@ -4,7 +4,7 @@
         <li class="list-group-item list-group-item-action" routerLink="clients" routerLinkActive="active">
             <fa name="address-card-o" class="px-2"></fa>clientes
         </li>
-        <li class="list-group-item list-group-item-action">
+        <li class="list-group-item list-group-item-action" routerLink="condominiums" routerLinkActive="active">
             <fa name="building-o" class="px-2"></fa> Condomínios
         </li>
         <li class="list-group-item list-group-item-action" routerLink="chargers" routerLinkActive="active">
@@ -12,6 +12,9 @@
         </li>
         <li class="list-group-item list-group-item-action" routerLink="vehicles" routerLinkActive="active">
             <fa name="car" class="px-2"></fa> Veiculos e Conectores
+        </li>
+        <li class="list-group-item list-group-item-action" (click)="logout()">
+            <fa name="sign-out" class="px-2"></fa> Sair
         </li>
     </ul>
 </div>
