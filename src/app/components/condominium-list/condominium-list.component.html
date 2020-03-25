@@ -1,0 +1,68 @@
+<div class="text-right mb-3">
+    <button title="Novo condominio" class="btn btn-primary" (click)="insertVehicles()">
+        <i class="fa fa-plus pr-2"></i> Adicionar Condominio
+    </button>
+</div>
+<div>
+    <div class="card card-table shadow mb-3 bg-white rounded">
+        <div class="card-header-primary rounded d-flex justify-content-between">
+            <div class="d-flex justify-content-start">
+                <h5 class="my-2 text-white"></h5>
+            </div>
+            <div class="md-form mt-0">
+                <form class="form-inline mr-auto">
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="Search" name="Search"
+                            [(ngModel)]="searchTextVehicles" [ngModelOptions]="{standalone: true}" autocomplete="off">
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="fa fa-search fa-1.8x" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Card content -->
+        <div class="card-body p-0 ">
+            <div class="table-responsive dashbard-card">
+                <table class="table table-hover text-black mb-0">
+                    <thead class="#">
+                        <tr>
+                            <th>Nome</th>
+                            <th>Endreço</th>
+                            <th>Qnt de carregadores</th>
+                            <th>Qnt de usuários</th>
+                            <th class="text-right align-items-right">
+                                <!-- button -->
+
+                                <!-- end -->
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let condo of condoList | filter:searchTextVehicles">
+                            <th scope="row">{{ condo.name }}</th>
+                            <td> {{ condo.address }}</td>
+                            <td>{{ condo.chargers.length }}</td>
+                            <td>{{ condo.users.length }}</td>
+                            <td class="text-right">
+                                <div class="btn-group">
+                                    <button type="button" title="Editar" class="btn btn-primary shadow-md rounded mr-2"
+                                        (click)="editVehicles(vehicle)">
+                                        <span class="fa fa-pencil"></span>
+                                    </button>
+                                    <button type="button" title="Excluir" class="btn btn-primary shadow-md rounded mr-2"
+                                        (click)="deleteVehicle(vehicle)">
+                                        <span class="fa fa-trash"> </span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

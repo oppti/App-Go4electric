@@ -13,7 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // SERVICES
 import { AuthService } from './services/auth.service';
 import { LoginpageComponent } from './pages/loginpage/loginpage.component';
-import { HomeComponent } from './pages/home/home.component';
+import { HomeComponent } from './pages/admin/home/home.component';
 import { LoadingComponent } from './components/loading/loading.component';
 
 import { LoaderService } from './services/loader.service';
@@ -40,14 +40,18 @@ import { MinCardsComponent } from './components/min-cards/min-cards.component';
 import { VehicleListComponent } from './components/vehicle-list/vehicle-list.component';
 import { CellphonePipe } from './cellphone.pipe';
 import { LeftMenuComponent } from './components/left-menu/left-menu.component';
-import { ClientPageComponent } from './pages/client-page/client-page.component';
-import { VehiclePageComponent } from './pages/vehicle-page/vehicle-page.component';
+import { ClientPageComponent } from './pages/admin/client-page/client-page.component';
+import { VehiclePageComponent } from './pages/admin/vehicle-page/vehicle-page.component';
 import { ConnectorsListComponent } from './components/connectors-list/connectors-list.component';
 import { ModalConnectorsComponent } from './components/modal-connectors/modal-connectors.component';
-import { ChargerPagesComponent } from './pages/charger-pages/charger-pages.component';
-import { CondominumPageComponent } from './pages/condominum-page/condominum-page.component';
+import { ChargerPagesComponent } from './pages/admin/charger-pages/charger-pages.component';
+import { CondominumPageComponent } from './pages/admin/condominum-page/condominum-page.component';
 import { ConnectorSelectionComponent } from './components/connector-selection/connector-selection.component';
-import { AngularFireStorage } from 'angularfire2/storage';
+import { AngularFireStorage, AngularFireStorageModule } from 'angularfire2/storage';
+import { CondominiumListComponent } from './components/condominium-list/condominium-list.component';
+import { UserDashboardComponent } from './pages/dashboard/user-dashboard/user-dashboard.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { AuthUserGuardService } from './services/auth-user-guard.service';
 
 
 @NgModule({
@@ -75,9 +79,13 @@ import { AngularFireStorage } from 'angularfire2/storage';
     ChargerPagesComponent,
     CondominumPageComponent,
     ConnectorSelectionComponent,
+    CondominiumListComponent,
+    UserDashboardComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
     AngularFireAuthModule,
     BrowserModule,
     FormsModule,
@@ -99,7 +107,9 @@ import { AngularFireStorage } from 'angularfire2/storage';
     ModalVehiclesComponent,
     AlertModalComponent
   ],
-  providers: [AuthService, LoaderService, AngularFireStorage,
+  providers: [
+    AuthService, LoaderService, AngularFireStorage,
+    AuthGuardService, AuthUserGuardService,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })

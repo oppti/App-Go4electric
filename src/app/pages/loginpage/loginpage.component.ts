@@ -16,6 +16,7 @@ export class LoginpageComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
+    this.authService.logout();
     this.loginForm = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, Validators.required],
@@ -29,7 +30,11 @@ export class LoginpageComponent implements OnInit {
       const pass = this.loginForm.get('password').value;
       this.authService.login(email, pass).then((response: boolean) => {
         if (response) {
-          this.router.navigate(['/home']);
+          if (this.authService.isAdmin()) {
+            this.router.navigate(['/admin']);
+          } else {
+            this.router.navigate(['/dashboard']);
+          }
         }
       }).catch((e) => {
         this.loginError = true;
