@@ -105,6 +105,7 @@ import { AuthUserGuardService } from './services/auth-user-guard.service';
   entryComponents: [
     ModalUsersComponent,
     ModalVehiclesComponent,
+    ModalChargersComponent,
     AlertModalComponent
   ],
   providers: [

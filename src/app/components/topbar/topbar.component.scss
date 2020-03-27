@@ -3,13 +3,14 @@
 .go4-topbar {
   background-color: $primary;
   color: white;
-  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   position: fixed;
-  width: 100%;
   z-index: 10;
   top: 0;
+  left: 0;
+  right: 0;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
 .navbar-brand {

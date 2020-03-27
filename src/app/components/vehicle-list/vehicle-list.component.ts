@@ -15,7 +15,7 @@ export class VehicleListComponent implements OnInit {
   vehicleList: Vehicle[];
 
   constructor(private vehiclesService: VehiclesService, private dialog: MatDialog,
-    private storage: AngularFireStorage) { }
+              private storage: AngularFireStorage) { }
 
   ngOnInit() {
     this.getVehicles();
@@ -57,7 +57,7 @@ export class VehicleListComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(result => {
-      if (result === vehicle) {
+      if (result) {
         this.vehiclesService.delVehicle(vehicle.uid).subscribe(() => {
           this.getVehicles();
         });

@@ -17,8 +17,12 @@
         <fa name="ellipsis-v" class="cursor-pointer px-3" id="dropdownMenuButton" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false"></fa>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Perfil</a>
-            <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
+            <a class="dropdown-item" href="#">
+                <fa name="user-circle" class="px-2"></fa> Perfil
+            </a>
+            <a class="dropdown-item" href="#" (click)="logout()">
+                <fa name="sign-out" class="px-2"></fa> Sair
+            </a>
         </div>
     </div>
 </nav>

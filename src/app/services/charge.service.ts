@@ -19,23 +19,23 @@ export class ChargeService {
       'Content-Type': 'application/json'
     };
   }
-  public getCharges(): Observable<Charger[]> {
+  public getChargers(): Observable<Charger[]> {
     return this.http.get(environment.apiURL + 'chargers', { headers: this.getHeaders() })
       .pipe(map((response: ResponseData) => response.data as Charger[]));
   }
 
-  public addCharges(pVehicle: Charger): Observable<Charger> {
-    return this.http.post(environment.apiURL + '/chargers/add', { vehicle: pVehicle }, { headers: this.getHeaders() })
+  public addCharger(iot: Charger): Observable<Charger> {
+    return this.http.post(environment.apiURL + 'chargers/add', { charger: iot }, { headers: this.getHeaders() })
       .pipe(map((response: ResponseData) => response.data as Charger));
   }
 
-  public editCharges(pVehicle: Charger): Observable<Charger> {
-    return this.http.patch(environment.apiURL + '/chargers', { vehicle: pVehicle }, { headers: this.getHeaders() })
+  public editCharger(iot: Charger): Observable<Charger> {
+    return this.http.patch(environment.apiURL + 'chargers/' + iot.uid, { charger: iot }, { headers: this.getHeaders() })
       .pipe(map((response: ResponseData) => response.data as Charger));
   }
 
-  public delCharges(vuid: string): Observable<boolean> {
-    return this.http.delete(environment.apiURL + '/chargers' + vuid, { headers: this.getHeaders() })
+  public delCharger(cuid: string): Observable<boolean> {
+    return this.http.delete(environment.apiURL + 'chargers/' + cuid, { headers: this.getHeaders() })
       .pipe(map((response: ResponseData) => response.data as boolean));
   }
 

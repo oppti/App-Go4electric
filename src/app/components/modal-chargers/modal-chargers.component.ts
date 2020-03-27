@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Charger } from 'src/app/model/charger';
-import { ConnectorType } from 'src/app/model/connector-type.enum';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -11,11 +10,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ModalChargersComponent {
 
   public publicData = { charge: null, action: null };
-  public charge: Charger;
+  public conn: Charger;
   public title = '';
-  public connectorList: any[];
-
-  connectorType = ConnectorType;
 
   constructor(
     public dialogRef: MatDialogRef<ModalChargersComponent>,
@@ -23,14 +19,16 @@ export class ModalChargersComponent {
     Object.assign(this.publicData, data);
 
     if (data.action === 'edit') {
-      this.charge = data.vehicle;
-      this.title = this.charge.name;
+      this.conn = data.charger;
+      this.title = this.conn.name;
     } else {
-      this.title = 'New Charge';
-      this.charge = new Charger();
+      this.title = 'Novo Carregador';
+      this.conn = new Charger();
     }
+  }
 
-    this.connectorList = Object.keys(this.connectorType);
+  changeConnectors(connectors) {
+    this.conn.connectors = connectors;
   }
 
   closeClick(): void {
@@ -38,6 +36,6 @@ export class ModalChargersComponent {
   }
 
   save(): void {
-    this.dialogRef.close(this.charge);
+    this.dialogRef.close(this.conn);
   }
 }

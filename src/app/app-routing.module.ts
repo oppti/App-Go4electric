@@ -28,8 +28,6 @@ const routes: Routes = [
     path: 'dashboard', component: UserDashboardComponent,
     canActivate: [AuthUserGuardService]
   },
-  { path: '**', redirectTo: '' }
-
 ];
 
 @NgModule({

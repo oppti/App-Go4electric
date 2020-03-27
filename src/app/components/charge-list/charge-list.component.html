@@ -1,6 +1,6 @@
 <div class="text-right mb-3">
     <button title="Adicionar veículo" class="btn btn-primary"
-        (click)="addCharger()">
+        (click)="newCharge()">
         <i class="fa fa-plus pr-2"></i> Adicionar Carregador
     </button>
 </div>
@@ -49,11 +49,11 @@
                             <td class="text-right">
                                 <div class="btn-group">
                                     <button type="button" title="Editar" class="btn btn-primary shadow-md rounded mr-2"
-                                        (click)="editCharger(charger)">
+                                        (click)="edit(charger)">
                                         <span class="fa fa-pencil"></span>
                                     </button>
                                     <button type="button" title="Excluir" class="btn btn-primary shadow-md rounded mr-2"
-                                        (click)="deleteCharger(charger)">
+                                        (click)="del(charger)">
                                         <span class="fa fa-trash"> </span>
                                     </button>
                                 </div>

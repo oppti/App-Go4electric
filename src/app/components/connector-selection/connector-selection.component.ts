@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ConnectorService } from 'src/app/services/connector.service';
 import { Connector } from 'src/app/model/connector';
 import {
@@ -14,6 +14,7 @@ import { isNullOrUndefined } from 'util';
 export class ConnectorSelectionComponent implements OnInit {
   connectorList: Connector[];
   @Input() selectedConnectors: Connector[];
+  @Output() selection: EventEmitter<Connector[]> = new EventEmitter<Connector[]>();
 
   constructor(private connectorService: ConnectorService, private storage: AngularFireStorage) {
   }
@@ -57,6 +58,8 @@ export class ConnectorSelectionComponent implements OnInit {
         }
       });
     }
+    this.selection.emit(this.selectedConnectors);
+
   }
 
 }
