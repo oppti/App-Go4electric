@@ -33,6 +33,7 @@
                             <th>Nome</th>
                             <th>Modelo</th>
                             <th>Tipo</th>
+                            <th> Bateria</th>
                             <th>Tipo de Conector</th>
                             <th class="text-right align-items-right">
                                 <!-- button -->
@@ -46,6 +47,7 @@
                             <th scope="row">{{ vehicle.name}}</th>
                             <td> {{ vehicle.model}}</td>
                             <td>{{ vehicle.type}}</td>
+                            <td> {{ vehicle.batterySize }} kW</td>
                             <td>
                                 <span *ngFor="let connctor of vehicle.connectorType">
                                     <img class="connector-type" [src]='connctor.iconURL' />

@@ -1,0 +1,17 @@
+@import "variables";
+
+.charger-item {
+    display: inline;
+    max-width: 10em;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    background-color: $primary;
+    border-radius: 5em;
+}
+
+.close-icon {
+    cursor: pointer;
+    font-size: 1.3em;
+}

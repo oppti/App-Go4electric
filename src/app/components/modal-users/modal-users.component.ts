@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Client } from 'src/app/model/client';
 import { Billingstatus } from 'src/app/model/billingstatus.enum';
 import { UserService } from 'src/app/services/user.service';
+import { Charger } from 'src/app/model/charger';
 
 @Component({
   selector: 'app-modal-users',
@@ -15,6 +16,7 @@ export class ModalUsersComponent {
   public sub = '';
   public client: Client;
   public statusList: any[];
+  selectedChargers: Charger[];
 
   status = Billingstatus;
 
@@ -27,6 +29,7 @@ export class ModalUsersComponent {
     this.client = data.client;
     this.title = this.client.name || 'Cadastro incompleto';
     this.sub = this.client.phone;
+    this.selectedChargers = this.client.chargers;
 
     this.statusList = Object.keys(this.status);
   }
@@ -35,7 +38,12 @@ export class ModalUsersComponent {
     this.dialogRef.close();
   }
 
+  chargersChange(charges: Charger[]) {
+    this.selectedChargers = charges;
+  }
+
   save(): void {
+    this.client.chargers = this.selectedChargers;
     this.dialogRef.close(this.client);
   }
 

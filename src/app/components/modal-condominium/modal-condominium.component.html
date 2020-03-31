@@ -1,0 +1,61 @@
+<h1 mat-dialog-title>{{title}}
+    <button type="button" (click)="closeClick()" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</h1>
+<div mat-dialog-content>
+    <div class="form-group">
+        <label>Nome</label>
+        <input type="text" class="form-control" placeholder="Nome" [(ngModel)]="condo.name">
+    </div>
+    <div class="form-group">
+        <label>Endereço</label>
+        <!-- <app-address-completer [adressType]='address'></app-address-completer> -->
+        <input type="text" class="form-control" placeholder="Endereço" [(ngModel)]="condo.address">
+    </div>
+    <div class="form-group">
+        <label>Localização</label>
+        <div class="form-row">
+            <div class="col">
+                <input type="number" class="form-control" placeholder="Latitude" [(ngModel)]="lat">
+            </div>
+            <div class="col">
+                <input type="number" class="form-control" placeholder="Longitude" [(ngModel)]="long">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>E-mail (login na plataforma)</label>
+        <input type="text" class="form-control" placeholder="E-mail" [(ngModel)]="condo.login">
+    </div>
+    <hr class="pt-2" />
+    <h5 class="pb-4">Dados do Responsável</h5>
+    <div class="form-group">
+        <label>Nome</label>
+        <input type="text" class="form-control" placeholder="Nome do responsável" [(ngModel)]="resName">
+    </div>
+    <div class="form-group">
+        <label>Telefone</label>
+        <input type="text" class="form-control" placeholder="telefone do responsável" [(ngModel)]="resPhone">
+    </div>
+    <div class="form-group">
+        <label>E-mail</label>
+        <input type="text" class="form-control" placeholder="E-mail do responsável" [(ngModel)]="resMail">
+    </div>
+    <hr class="pt-2" />
+    <h5 class="pb-4">Carregadores</h5>
+    <app-charger-select (selection)='chargersChange($event)' [selected]="selectedChargers"></app-charger-select>
+    <hr class="pt-2" />
+    <h5 class="pb-4">Usuários</h5>
+    <app-user-select (selection)='usersChange($event)' [selected]="selectedUsers"></app-user-select>
+</div>
+
+<div class="modal-footer justify-content-end">
+    <button class="btn btn-primary text-center" cdkFocusInitial type="button" (click)="save()">
+        Salvar
+    </button>
+
+    <button class="btn btn-primary text-center" type="button" (click)="closeClick()">
+        Cancelar
+    </button>
+</div>

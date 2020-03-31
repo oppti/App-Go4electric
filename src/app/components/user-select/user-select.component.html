@@ -1,0 +1,23 @@
+<div class="form-row align-items-start">
+    <div class="col-11 pr-0">
+        <select class="custom-select" [(ngModel)]="selectedOption">
+            <option selected disabled>Selecione um usuario</option>
+            <option *ngFor="let user of userList; let i=index" [value]="i">{{user.name}} - {{user.phone}}</option>
+        </select>
+    </div>
+    <div class="col-1 pl-0">
+        <button type="button" title="Adicionar" class="btn btn-primary shadow-md rounded w-100" (click)="add()">
+            <span class="fa fa-plus"></span>
+        </button>
+    </div>
+</div>
+<div class="selected-chargers mt-2">
+    <ul class="p-0 m-0">
+        <li *ngFor="let user of selected; let i=index" class="d-inline mr-2">
+            <div class="charger-item p-1 pl-3">
+                {{user.name}}
+                <span class='close-icon pl-2 fa fa-close' (click)="remove(i)">&nbsp;</span>
+            </div>
+        </li>
+    </ul>
+</div>

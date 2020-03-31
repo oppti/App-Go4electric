@@ -34,6 +34,10 @@
         </label>
         <p class="key-id" *ngFor="let key of client.keyID">{{ key }}</p>
     </div>
+    <div class="form-group">
+        <label>Carregadores</label>
+        <app-charger-select (selection)='chargersChange($event)' [selected]="selectedChargers"></app-charger-select>
+    </div>
 </div>
 
 <div class="modal-footer justify-content-end">

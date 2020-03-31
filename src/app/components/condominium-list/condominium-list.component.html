@@ -1,5 +1,5 @@
 <div class="text-right mb-3">
-    <button title="Novo condominio" class="btn btn-primary" (click)="insertVehicles()">
+    <button title="Novo condominio" class="btn btn-primary" (click)="add()">
         <i class="fa fa-plus pr-2"></i> Adicionar Condominio
     </button>
 </div>
@@ -50,7 +50,7 @@
                             <td class="text-right">
                                 <div class="btn-group">
                                     <button type="button" title="Editar" class="btn btn-primary shadow-md rounded mr-2"
-                                        (click)="editVehicles(vehicle)">
+                                        (click)="edit(condo)">
                                         <span class="fa fa-pencil"></span>
                                     </button>
                                     <button type="button" title="Excluir" class="btn btn-primary shadow-md rounded mr-2"

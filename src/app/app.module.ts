@@ -52,6 +52,10 @@ import { CondominiumListComponent } from './components/condominium-list/condomin
 import { UserDashboardComponent } from './pages/dashboard/user-dashboard/user-dashboard.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthUserGuardService } from './services/auth-user-guard.service';
+import { ModalCondominiumComponent } from './components/modal-condominium/modal-condominium.component';
+import { AddressCompleterComponent } from './components/address-completer/address-completer.component';
+import { UserSelectComponent } from './components/user-select/user-select.component';
+import { ChargerSelectComponent } from './components/charger-select/charger-select.component';
 
 
 @NgModule({
@@ -81,6 +85,10 @@ import { AuthUserGuardService } from './services/auth-user-guard.service';
     ConnectorSelectionComponent,
     CondominiumListComponent,
     UserDashboardComponent,
+    ModalCondominiumComponent,
+    AddressCompleterComponent,
+    UserSelectComponent,
+    ChargerSelectComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -106,6 +114,7 @@ import { AuthUserGuardService } from './services/auth-user-guard.service';
     ModalUsersComponent,
     ModalVehiclesComponent,
     ModalChargersComponent,
+    ModalCondominiumComponent,
     AlertModalComponent
   ],
   providers: [

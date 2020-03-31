@@ -8,4 +8,5 @@ export class Vehicle {
     brand: string;
     type: VehicleType;
     connectorType: any[];
+    batterySize: string;
 }

@@ -29,7 +29,7 @@ export class UserService {
   }
 
   public editUser(pUser: Client): Observable<Client> {
-    return this.http.patch(environment.apiURL + this._ENDPOINT, { client: pUser }, { headers: this.getHeaders() })
+    return this.http.patch(environment.apiURL + this._ENDPOINT + '/' + pUser.uid, { client: pUser }, { headers: this.getHeaders() })
       .pipe(map((response: ResponseData) => response.data as Client));
   }
 
