@@ -64,7 +64,10 @@ export class ModalCondominiumComponent implements OnInit {
   }
 
   save(): void {
-    this.condo.location = new admin.firestore.GeoPoint(this.lat, this.long);
+    this.condo.location = {
+      _latitude: this.lat,
+      _longitude: this.long
+    };
     this.condo.chargers = this.selectedChargers;
     this.condo.users = this.selectedUsers;
     this.condo.responsible.name = this.resName;

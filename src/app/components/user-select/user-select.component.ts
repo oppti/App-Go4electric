@@ -26,7 +26,14 @@ export class UserSelectComponent implements OnInit {
 
   getUsers() {
     this.service.getUsers().subscribe(usrs => {
-      this.userList = usrs;
+      usrs.forEach(user => {
+        if (user.birthday['_seconds']) {
+          user.birthday = new Date(user.birthday['_seconds'] * 1000).toISOString();
+        } else {
+          user.birthday = null;
+        }
+        this.userList.push(user);
+      });
     });
   }
 

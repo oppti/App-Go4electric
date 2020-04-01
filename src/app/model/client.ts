@@ -7,7 +7,7 @@ export class Client {
     name: string;
     email: string;
     chargers: Charger[];
-    // birthday: admin.firestore.Timestamp;
+    birthday: string;
     phone: string;
     cpf: string;
     photo: string;  // should be an URL

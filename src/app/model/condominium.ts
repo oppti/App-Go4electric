@@ -5,7 +5,7 @@ export class Condominium {
     uid: string;
     chargers: any[];
     address: string;
-    location: admin.firestore.GeoPoint;
+    location: any;
     users: any[];
     responsible: {
         name: string;

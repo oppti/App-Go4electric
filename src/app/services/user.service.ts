@@ -29,6 +29,12 @@ export class UserService {
   }
 
   public editUser(pUser: Client): Observable<Client> {
+    if (pUser.birthday['_seconds']) {
+      pUser.birthday = new Date(pUser.birthday['_seconds'] * 1000).toISOString();
+    } else {
+      pUser.birthday = null;
+    }
+
     return this.http.patch(environment.apiURL + this._ENDPOINT + '/' + pUser.uid, { client: pUser }, { headers: this.getHeaders() })
       .pipe(map((response: ResponseData) => response.data as Client));
   }
@@ -48,8 +54,8 @@ export class UserService {
   // We never should del user.
   public delUser(pUser: Client): Observable<Client> {
     return this.http.post(environment.apiURL + this._ENDPOINT + '/' + pUser.uid + '/changeStatus',
-    { billStatus: Billingstatus.canceled }, { headers: this.getHeaders() })
-    .pipe(map((response: ResponseData) => response.data as Client));
+      { billStatus: Billingstatus.canceled }, { headers: this.getHeaders() })
+      .pipe(map((response: ResponseData) => response.data as Client));
   }
 
 }
