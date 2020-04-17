@@ -1,22 +1,33 @@
-<div class="container-fluid">
-    <div class="m-auto login-form">
-        <div class="card shadow p-3 mb-2 bg-white rounded" [class.card-error]="loginError">
-            <div class="card-body ">
-                <img src="assets/logo.png" class="img-fluid p-5" />
-                <form accept-charset="UTF-8" role="form" [formGroup]="loginForm">
-                    <fieldset>
-                        <div class="form-group">
-                            <input class="form-control" formControlName="email" placeholder="E-mail" type="text" />
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" placeholder="Password" formControlName="password"
-                                type="password" />
-                        </div>
-                        <input class="btn btn-lg btn-primary btn-block" type="submit" value="Login"
-                            [disabled]="!loginForm.valid" (click)="onSubmit()">
-                    </fieldset>
-                </form>
+<div class="login-form">
+    <div class="card p-3 mb-2 bg-white border-0" [class.card-error]="loginError">
+        <div class="card-body ">
+            <img src="assets/icon.png" class="img-fluid p-3 mb-3 logo-wing" />
+            <div class="p-2 mb-3 login-error" *ngIf="loginError" [class.login-animation]="loginError">
+                Usuário ou senha inválidos
             </div>
+            <div class="p-2 mb-3 login-success" *ngIf="resetSent" [class.login-animation]="resetSent">
+                Recuperação de senha enviado, verifique seu email.
+            </div>
+            <form accept-charset="UTF-8" role="form" [formGroup]="loginForm">
+                <fieldset>
+                    <div class="form-group text-left">
+                        <label>email</label>
+                        <input class="form-control login-input" formControlName="email" type="email" />
+                    </div>
+                    <div class="form-group text-left">
+                        <label>senha</label>
+                        <input class="form-control login-input" formControlName="password" type="password" />
+                        <span class="float-right">
+                            <button type="button" class="btn btn-link password-recovery"
+                                (click)="passRecovery()">esqueci</button>
+                        </span>
+                    </div>
+                    <div class="form-group mt-5">
+                        <input class="btn btn-primary btn-login" type="submit" value="Login"
+                            [disabled]="!loginForm.valid" (click)="onSubmit()">
+                    </div>
+                </fieldset>
+            </form>
         </div>
     </div>
 </div>

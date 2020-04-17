@@ -11,7 +11,7 @@ export class AuthUserGuardService {
     if (!this.auth.isLogged()) {
       this.router.navigate(['login']);
       return false;
-    } 
+    }
     return true;
   }
 }

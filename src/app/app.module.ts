@@ -56,7 +56,16 @@ import { ModalCondominiumComponent } from './components/modal-condominium/modal-
 import { AddressCompleterComponent } from './components/address-completer/address-completer.component';
 import { UserSelectComponent } from './components/user-select/user-select.component';
 import { ChargerSelectComponent } from './components/charger-select/charger-select.component';
+import { ConsumDataChartComponent } from './components/consum-data-chart/consum-data-chart.component';
 
+
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { ModalResetPasswordComponent } from './components/modal-reset-password/modal-reset-password.component';
+import { ProfilePageComponent } from './pages/dashboard/profile-page/profile-page.component';
+import { DashboardDataComponent } from './pages/dashboard/dashboard-data/dashboard-data.component';
+import { ModalPasswordChangeComponent } from './components/modal-password-change/modal-password-change.component';
+import { ModalUserHistoryComponent } from './components/modal-user-history/modal-user-history.component';
 
 @NgModule({
   declarations: [
@@ -89,8 +98,15 @@ import { ChargerSelectComponent } from './components/charger-select/charger-sele
     AddressCompleterComponent,
     UserSelectComponent,
     ChargerSelectComponent,
+    ConsumDataChartComponent,
+    ModalResetPasswordComponent,
+    ProfilePageComponent,
+    DashboardDataComponent,
+    ModalPasswordChangeComponent,
+    ModalUserHistoryComponent,
   ],
   imports: [
+    MDBBootstrapModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
@@ -115,8 +131,12 @@ import { ChargerSelectComponent } from './components/charger-select/charger-sele
     ModalVehiclesComponent,
     ModalChargersComponent,
     ModalCondominiumComponent,
+    ModalResetPasswordComponent,
+    ModalPasswordChangeComponent,
+    ModalUserHistoryComponent,
     AlertModalComponent
   ],
+  schemas: [NO_ERRORS_SCHEMA],
   providers: [
     AuthService, LoaderService, AngularFireStorage,
     AuthGuardService, AuthUserGuardService,

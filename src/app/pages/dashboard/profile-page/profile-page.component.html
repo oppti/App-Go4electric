@@ -1,0 +1,61 @@
+<div *ngIf="loading | async">
+    <h5 class="my-4 mb-5">Olá, {{condo.login}}</h5>
+    <div class="card my-3 shadow">
+        <div class="card-body">
+            <h5 class="card-title">Dados do Condomínio</h5>
+            <div class="card-text">
+                <div class="form-group">
+                    <label>Nome do Condomínio</label>
+                    <input type="text" class="form-control" [(ngModel)]="condo.name">
+                </div>
+                <div class="form-group">
+                    <label>Endereço</label>
+                    <input type="text" class="form-control" [(ngModel)]="condo.address">
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Latitude</label>
+                            <input type="number" class="form-control" [(ngModel)]="condo.location._latitude">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Logitude</label>
+                            <input type="number" class="form-control" [(ngModel)]="condo.location._longitude">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card my-3 shadow">
+        <div class="card-body">
+            <h5 class="card-title">Dados do Administrador</h5>
+            <div class="card-text">
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" class="form-control" [(ngModel)]="condo.responsible.name">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" class="form-control" [(ngModel)]="condo.responsible.email">
+                </div>
+                <div class="form-group">
+                    <label>Telefone</label>
+                    <input type="text" class="form-control" [(ngModel)]="condo.responsible.phone">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-5">
+        <div class="float-right">
+            <button class="btn btn-primary mx-2" type="button" (click)="passwordChange()">
+                Alterar senha
+            </button>
+            <button class="btn btn-primary" type="button" (click)="saveData()">
+                Salvar dados
+            </button>
+        </div>
+    </div>
+</div>

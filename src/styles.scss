@@ -1,12 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import "variables";
+@import "customIcons";
 @import "~bootstrap/scss/bootstrap";
 
-html,
+html
 body {
-  background-color: $secondary !important;
+  font-family: 'Source Sans Pro' !important;
 }
 
+.btn {
+  border-radius: 0.7em !important;
+}
 
 .btn-primary,
 .btn-primary:visited {
@@ -50,10 +54,12 @@ body {
 
 .icon-success {
   color: $success;
+  font-size: 1.5em;
 }
 
 .icon-error {
   color: $error;
+  font-size: 1.5em;
 }
 
 .dashbard-card {
@@ -70,4 +76,8 @@ h3 {
   font-size: 1.4em !important;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+.modal-footer {
+  border-top: 0px !important;
 }

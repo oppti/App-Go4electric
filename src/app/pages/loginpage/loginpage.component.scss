@@ -1,12 +1,83 @@
 @import "variables";
 
+.logo-wing {
+  max-width: 8em;
+}
+
+.card-body {
+  text-align: center;
+}
+
 .login-form {
+    width: 100%;
+    height: 100%;
+    min-width: 15em;
+    min-height: 15em;
     max-width: 30em;
+    max-height: 30em;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+label {
+  color: $ternary;
+  font-size: large;
+  margin-left: -1em;
+}
+
+.password-recovery {
+  color: $ternary;
+  font-size: large;
+}
+
+.login-input {
+  border-radius: 0.7em;
+  border-color: $ternary;
+}
+
+.login-input:focus {
+  box-shadow:  0 0 0.2rem $ternary
+}
+
+.btn-login {
+  width: 50%;
+}
+
+.login-error {
+  opacity: 0;
+  background-color: rgba(117,20,20, 0.5);
+  border: solid 1px $error;
+  color: white;
+  font-weight: bold;
+  border-radius: 0.3em;
+}
+
+.login-success {
+  opacity: 0;
+  background-color: rgba(0,150,0, 0.5);
+  border: solid 1px $success;
+  color: white;
+  font-weight: bold;
+  border-radius: 0.3em;
+}
+
+
+.login-animation {
+  -webkit-animation: fadeinout 4s linear forwards;
+  animation: fadeinout 4s linear forwards;
 }
 
 .card-error {
-    -webkit-animation: shake .5s ease-in-out;
-    animation: shake .5s ease-in-out;
+    -webkit-animation: shake .3s ease-in-out;
+    animation: shake .3s ease-in-out;
+}
+
+
+@keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
 }
 
 @-webkit-keyframes shake {

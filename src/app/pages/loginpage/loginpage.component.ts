@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalResetPasswordComponent } from 'src/app/components/modal-reset-password/modal-reset-password.component';
 
 @Component({
   selector: 'app-loginpage',
@@ -12,8 +14,13 @@ export class LoginpageComponent implements OnInit {
 
   loginForm: FormGroup;
   loginError = false;
+  resetSent = false;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private dialog: MatDialog,
+    private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
     this.authService.logout();
@@ -33,15 +40,42 @@ export class LoginpageComponent implements OnInit {
           if (this.authService.isAdmin()) {
             this.router.navigate(['/admin']);
           } else {
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/dashboard/charts']);
           }
         }
       }).catch((e) => {
         this.loginError = true;
+        this.setVariablesTimeout();
       });
     } else {
       this.loginError = true;
+      this.setVariablesTimeout();
     }
+  }
+
+  setVariablesTimeout() {
+    setTimeout(() => {
+      this.resetSent = false;
+      this.loginError = false;
+    }, 4000);
+  }
+
+  passRecovery() {
+    const dialogRef = this.dialog.open(ModalResetPasswordComponent, {
+      width: '50em',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.authService.forgotPass(result).then(() => {
+          this.resetSent = true;
+          this.setVariablesTimeout();
+        }).catch(e => {
+          console.log(e);
+        });
+      }
+    });
   }
 
 }

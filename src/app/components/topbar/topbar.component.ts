@@ -8,13 +8,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./topbar.component.scss']
 })
 export class TopbarComponent implements OnInit {
+  showBackButton: boolean;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    this.showBackButton = false;
   }
 
   logout() {
     this.authService.logout();
+  }
+
+  hideBack() {
+    this.showBackButton = false;
+  }
+
+  showBack() {
+    this.showBackButton = true;
+  }
+
+  back() {
+    this.showBackButton = false;
+    this.router.navigateByUrl('/dashboard/charts');
   }
 }

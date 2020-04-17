@@ -1,29 +1,25 @@
-<nav class="navbar navbar-light navbar-expand-lg scrolling-navbar double-nav go4-topbar">
-    <!-- logo -->
-    <div class="breadcrumb-dn mr-auto text-white">
-        <h4 class="px-5"> Go4Electric</h4>
+<nav class="navbar navbar-dark navbar-expand-lg scrolling-navbar double-nav go4-topbar">
+    <div *ngIf="showBackButton" class="px-1 pr-3 ">
+        <button class="btn btn-link btn-back" (click)="back()">
+            <i class="fa fa-angle-left"></i>
+        </button>
     </div>
-    <!-- end logo -->
-
-    <!-- dropdowns -->
-    <div class="dropdown">
-        <fa name="bell" class="cursor-pointer px-3" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false"></fa>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Notificações</a>
-        </div>
+    <div class="navbar-brand text-white">
+        <h5><i class="icon-wing px-2"></i>Go4Electric</h5>
     </div>
-    <div class="dropdown">
+    <div class="navbar-toggler burguer-menu d-block  ml-auto order-lg-last">
         <fa name="ellipsis-v" class="cursor-pointer px-3" id="dropdownMenuButton" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false"></fa>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item py-2" routerLink="charts" routerLinkActive="active" (click)="hideBack()">
+                <fa name="bar-chart" class="px-2"></fa> Dashboard
+            </a>
+            <a class="dropdown-item py-2" routerLink="profile" routerLinkActive="active" (click)="showBack()">
                 <fa name="user-circle" class="px-2"></fa> Perfil
             </a>
-            <a class="dropdown-item" href="#" (click)="logout()">
+            <a class="dropdown-item py-2" href="#" routerLink="/login" routerLinkActive="active">
                 <fa name="sign-out" class="px-2"></fa> Sair
             </a>
         </div>
     </div>
 </nav>
-<!-- end dropdowns -->

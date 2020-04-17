@@ -27,7 +27,17 @@ export class CondominiumService {
   }
 
   public add(cond: Condominium): Observable<Condominium> {
-    return this.http.post(environment.apiURL + this._ENDPOINT, {condo: cond}, { headers: this.getHeaders() })
+    return this.http.post(environment.apiURL + this._ENDPOINT, { condo: cond }, { headers: this.getHeaders() })
       .pipe(map((response: ResponseData) => response.data as Condominium));
+  }
+
+  public edit(cond: Condominium): Observable<Condominium> {
+    return this.http.post(environment.apiURL + this._ENDPOINT + '/edit', { condo: cond }, { headers: this.getHeaders() })
+      .pipe(map((response: ResponseData) => response.data as Condominium));
+  }
+
+  public del(id: string): Observable<boolean> {
+    return this.http.delete(environment.apiURL + this._ENDPOINT + '/' + id, { headers: this.getHeaders() })
+      .pipe(map((response: ResponseData) => response.data as boolean));
   }
 }

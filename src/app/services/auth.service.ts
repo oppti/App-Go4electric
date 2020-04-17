@@ -56,4 +56,30 @@ export class AuthService {
       console.error(e);
     });
   }
+
+  forgotPass(email: string): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      this.firebaseAuth.auth.sendPasswordResetEmail(email).then(() => {
+        resolve(true);
+      }).catch(() => reject(false));
+    });
+  }
+
+  newPassword(email: string, oldPass: string, newPass: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+
+      this.firebaseAuth
+        .auth
+        .signInWithEmailAndPassword(email, oldPass)
+        .then(value => {
+          this.firebaseAuth.auth.currentUser.updatePassword(newPass).then(response => {
+            resolve(response);
+          }).catch(err => {
+            reject(err);
+          });
+        }).catch(err => {
+          reject(err);
+        });
+    });
+  }
 }

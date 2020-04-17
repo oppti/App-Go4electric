@@ -1,0 +1,28 @@
+@import "variables";
+
+p {
+    margin-bottom: 0 !important;
+    padding-left: 0.7em;
+}
+
+.date-col {
+    min-width: 2.5em;
+    & .date-item {
+        width: 2.5em;
+        background-color: $ternary;
+        height: 2.5em;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 50%;
+    
+        & .day-item {
+            font-size: 1em;
+        }
+    
+        & .month-item {
+            font-size: 0.7em;
+            margin-top: -0.5em;
+        }
+    }
+}

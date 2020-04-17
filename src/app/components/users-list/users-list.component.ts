@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { Client } from 'src/app/model/client';
 import { VehiclesService } from 'src/app/services/vehicles.service';
@@ -9,6 +9,8 @@ import { ModalVehiclesComponent } from 'src/app/components/modal-vehicles/modal-
 import { Observable } from 'rxjs';
 import { Billingstatus } from 'src/app/model/billingstatus.enum';
 import { AlertModalComponent } from '../alert-modal/alert-modal.component';
+import { DashboardService } from 'src/app/services/dashboard.service';
+import { ModalUserHistoryComponent } from '../modal-user-history/modal-user-history.component';
 
 
 @Component({
@@ -22,17 +24,28 @@ export class UsersListComponent implements OnInit {
   vehicleList: Vehicle[];
   datasource: any;
 
-  constructor(private userService: UserService, private dialog: MatDialog) {
-  }
+  @Input() dashboard: boolean;
+
+  constructor(
+    private userService: UserService,
+    private dashboardService: DashboardService,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     this.getUsers();
   }
 
   getUsers() {
-    this.userService.getUsers().subscribe((clients: Client[]) => {
-      this.clientList = clients.sort((a,b) => a.displayName.localeCompare(b.displayName));
-    });
+    if (this.dashboard) {
+      this.dashboardService.getUsers().subscribe((clients: Client[]) => {
+        this.clientList = clients.sort((a, b) => a.displayName.localeCompare(b.displayName));
+      });
+    } else {
+      this.userService.getUsers().subscribe((clients: Client[]) => {
+        this.clientList = clients.sort((a, b) => a.displayName.localeCompare(b.displayName));
+      });
+    }
   }
 
   editUsers(data) {
@@ -72,6 +85,15 @@ export class UsersListComponent implements OnInit {
         this.getUsers();
       }, () => this.getUsers());
     }
+  }
+
+  viewCharges(client: Client) {
+    this.dashboardService.getUserHistory(client.uid).subscribe((response) => {
+      const dialogRef = this.dialog.open(ModalUserHistoryComponent, {
+        width: '50em',
+        data: { history: response, user: client }
+      });
+    });
   }
 
 }

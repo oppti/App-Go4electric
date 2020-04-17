@@ -26,7 +26,7 @@
     </div>
     <div class="form-group">
         <label>E-mail (login na plataforma)</label>
-        <input type="text" class="form-control" placeholder="E-mail" [(ngModel)]="condo.login">
+        <input type="text" class="form-control" placeholder="E-mail" [(ngModel)]="condo.login" [attr.disabled]='data.action === "edit"'>
     </div>
     <hr class="pt-2" />
     <h5 class="pb-4">Dados do Responsável</h5>

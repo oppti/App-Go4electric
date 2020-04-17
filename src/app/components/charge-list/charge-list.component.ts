@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ChargeService } from 'src/app/services/charge.service';
 import { Charger } from 'src/app/model/charger';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalChargersComponent } from '../modal-chargers/modal-chargers.component';
 import { AlertModalComponent } from '../alert-modal/alert-modal.component';
+import { DashboardService } from 'src/app/services/dashboard.service';
 
 @Component({
   selector: 'app-charge-list',
@@ -12,18 +13,30 @@ import { AlertModalComponent } from '../alert-modal/alert-modal.component';
 })
 export class ChargeListComponent implements OnInit {
 
+  @Input() dashboard: boolean;
+
   chargerList: Charger[];
 
-  constructor(private service: ChargeService, private dialog: MatDialog) { }
+  constructor(
+    private service: ChargeService,
+    private dialog: MatDialog,
+    private dashboardService: DashboardService
+  ) { }
 
   ngOnInit() {
     this.getChargers();
   }
 
   getChargers() {
-    this.service.getChargers().subscribe(chargers => {
-      this.chargerList = chargers;
-    });
+    if (this.dashboard) {
+      this.dashboardService.getChargers().subscribe(chargers => {
+        this.chargerList = chargers;
+      });
+    } else {
+      this.service.getChargers().subscribe(chargers => {
+        this.chargerList = chargers;
+      });
+    }
   }
 
   newCharge() {
@@ -59,6 +72,7 @@ export class ChargeListComponent implements OnInit {
       }
     });
   }
+  
   edit(chg: Charger) {
     const dialogRef = this.dialog.open(ModalChargersComponent, {
       width: '50em',

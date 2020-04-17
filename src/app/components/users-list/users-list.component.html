@@ -1,6 +1,7 @@
 <div class="card card-table shadow mb-3 bg-white rounded">
   <div class="card-header-primary rounded d-flex justify-content-between">
     <div class="d-flex justify-content-start">
+      <h5 class="my-2 text-white" *ngIf="dashboard">Usuários</h5>
     </div>
     <div class="md-form mt-0">
       <form class="form-inline mr-auto">
@@ -18,13 +19,13 @@
   </div>
   <!-- Card content -->
   <div class="card-body p-0">
-    <div class="table-responsive">
+    <div class="table-responsive" [class.dashbard-card]="dashboard">
       <table class="table table-hover table-striped text-black mb-0">
         <thead class="#">
           <tr>
             <th>Nome</th>
             <th>Telefone</th>
-            <th>CPF</th>
+            <th *ngIf="!dashboard">CPF</th>
             <th class="text-center">Status</th>
             <th></th>
           </tr>
@@ -33,17 +34,17 @@
           <tr *ngFor="let client of clientList | filter:searchTextUsers">
             <td scope="row">{{ client.name || client.displayName }}</td>
             <td> {{ client.phone | cellphone }}</td>
-            <td> {{ client.cpf }}</td>
+            <td *ngIf="!dashboard"> {{ client.cpf }}</td>
             <td class="text-center">
               <ng-container *ngIf="client.billingStatus === 'active'">
-                <i class="fa fa-circle icon-success"></i>
+                <i class="icon-wing icon-success"></i>
               </ng-container>
               <ng-container *ngIf="client.billingStatus !== 'active'">
-                <i class="fa fa-circle icon-error"></i>
+                <i class="icon-wing icon-error"></i>
               </ng-container>
             </td>
             <td class="text-right">
-              <div class="btn-group">
+              <div class="btn-group" *ngIf="!dashboard">
                 <button type="button" title="Editar" class="btn btn-primary shadow-md rounded mr-2"
                   (click)="editUsers(client)">
                   <span class="fa fa-pencil"></span>
@@ -59,6 +60,12 @@
                 <button *ngIf="client.billingStatus === 'active'" type="button" title="Bloquear"
                   class="btn btn-primary shadow-md rounded" (click)="changeStatus(client)">
                   <span class="fa fa-ban"> </span>
+                </button>
+              </div>
+              <div class="btn-group" *ngIf="dashboard">
+                <button type="button" title="Ver recargas" class="btn btn-primary shadow-md rounded"
+                  (click)="viewCharges(client)">
+                  <span class="icon-ev_charger"> </span>
                 </button>
               </div>
             </td>

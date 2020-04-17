@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>
+    {{ client.name || client.displayName }} - Histórico
+    <button type="button" (click)="closeClick()" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</h1>
+<div mat-dialog-content>
+    <div class="card my-3 border-0" *ngFor="let charge of chargeHistory">
+        <div class="row align-items-center">
+            <div class="col-1 date-col">
+                <div class="date-item">
+                    <div class="day-item">{{ charge.day }}</div>
+                    <div class="month-item">{{ charge.month }}</div>
+                </div>
+            </div>
+            <div class="col-7">
+                <p>{{ charge.chargerID }}</p>
+                <p class="text-muted">às {{ charge.hour }}:{{ charge.min }}</p>
+            </div>
+            <div class="col text-right">
+                {{ charge.total }}
+            </div>
+        </div>
+        <!-- <div class="card-body">
+            <p class="card-title"> / {{ charge.month }} / {{ charge.year }}  </p>
+        </div> -->
+    </div>
+</div>
+<div class="modal-footer justify-content-end">
+    <button class="btn btn-primary text-center" cdkFocusInitial type="button" (click)="closeClick()">
+        OK
+    </button>
+</div>

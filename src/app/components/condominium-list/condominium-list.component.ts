@@ -3,6 +3,7 @@ import { CondominiumService } from 'src/app/services/condominium.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalCondominiumComponent } from '../modal-condominium/modal-condominium.component';
 import { Condominium } from 'src/app/model/condominium';
+import { AlertModalComponent } from '../alert-modal/alert-modal.component';
 
 @Component({
   selector: 'app-condominium-list',
@@ -39,17 +40,36 @@ export class CondominiumListComponent implements OnInit {
     });
   }
 
-  edit(cond: Condominium) {
+  edit(chg: Condominium) {
     const dialogRef = this.dialog.open(ModalCondominiumComponent, {
       width: '50em',
-      data: { condo: cond, action: 'edit' }
+      data: { condo: chg, action: 'edit' }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // this.service.editCharger(result).subscribe(() => {
-        //   this.getChargers();
-        // });
+        this.service.edit(result).subscribe(() => {
+          this.getCondoms();
+        });
+      }
+    });
+  }
+
+  deleteCondo(condo: Condominium) {
+    const dialogRef = this.dialog.open(AlertModalComponent, {
+      width: '400px',
+      data: {
+        type: 'question',
+        message: 'Esta ação irá deletar condominio selecionado.<br/> Deseja continuar?'
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.service.del(condo.uid).subscribe(() => {
+          this.getCondoms();
+        });
+      } else {
+        this.getCondoms();
       }
     });
   }

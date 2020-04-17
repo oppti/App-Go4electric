@@ -17,3 +17,30 @@
   color: white;
   font-weight: bold;
 }
+
+.btn-back {
+  font-weight: bold;
+  font-size: 1.7em;
+  padding: 0 !important;
+  color: white
+}
+
+
+.dropdown-item.active {
+  background-color: $primary;
+  color: white;
+  font-weight: bold;
+}
+
+.dropdown-item:active {
+  color: #fff;
+  text-decoration: none;
+  background-color: $primary;
+}
+
+.burguer-menu {
+  background-color: transparent !important;
+  border: 0 !important;
+}
+
+
